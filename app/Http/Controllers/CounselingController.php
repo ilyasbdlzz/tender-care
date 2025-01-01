@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Counseling;
 use Illuminate\Http\Request;
 
 class CounselingController extends Controller
@@ -11,8 +12,8 @@ class CounselingController extends Controller
      */
     public function index()
     {
-        $growthh = GrowthRecord::all();
-        return view('user.growthh', compact('growthh'));
+        $counseling = Counseling::all();
+        return view('user.appointmentstatus', compact('counseling'));
     }
 
     /**
@@ -20,8 +21,8 @@ class CounselingController extends Controller
      */
     public function create()
     {
-        $growthrecords = GrowthRecord::all();
-        return view('user.growthrecord', compact('growthrecords'));
+        $counselings = Counseling::all();
+        return view('user.appointment', compact('counselings'));
     }
 
     /**
@@ -29,17 +30,17 @@ class CounselingController extends Controller
      */
     public function store(Request $request)
     {
-        //validasi form input
         $validated = $request->validate([
-            'height' => 'required|string',
-            'weight' => 'required|string',
-            'head' => 'required|string',
-            'date' => 'required|string',
+            'iduser' => 'required|string',
+            'idtenagamedis' => 'required|date',
+            'clock' => 'required|string',
+            'status' => 'required|in:Pending,Approved,Rejected',
+            'date' => 'required|date',
         ]);
-        $validated['iduser'] = auth()->user()->id;
 
-        GrowthRecord::create($validated);
-        return redirect('/growthhistory')->with('pesan', 'Data Berhasil di Tambah');
+        $pengajuan_cuti = Counseling::find($id);
+        $pengajuan_cuti->update($validated);
+        return redirect('dashboard/pengajuan_cuti')->with('update', 'Data Berhasil di Perbarui');
     }
 
     /**

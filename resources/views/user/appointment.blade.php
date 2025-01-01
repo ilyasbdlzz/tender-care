@@ -11,7 +11,8 @@
         <div class="mx-10">
         <div class="bg-white shadow-lg rounded-md p-6 w-full px-5 my-10">
             <h2 class="text-2xl font-semibold mb-6">Counseling Registration</h2>
-            <form class="space-y-4 my-10">
+            <form method="POST" action="{{ route('appointmentstatus.store') }}" class="flex flex-col items-center mx-10">
+                @csrf
                 <div class="flex items-center space-x-4 my-5">
                     <label for="namaLengkap" class="block text-gray-700 text-sm font-bold w-1/3">Nama Lengkap</label>
                     <input type="text" id="namaLengkap" value="Ilyas Abdul Aziz Ps.g" 

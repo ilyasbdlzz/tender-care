@@ -12,7 +12,8 @@ class Counseling extends Model
     protected $fillable = [
         'iduser',
         'idtenagamedis',
-        'Status',
-        'Date',
+        'status',
+        'date',
+        'clock'
     ];
 }
