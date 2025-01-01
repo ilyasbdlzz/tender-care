@@ -8,7 +8,8 @@
     </x-slot>
     <x-slot name="page_content">
         <!-- Form Section -->
-        <div class="bg-white shadow-lg rounded-md p-6 max-w-md mx-5 my-10">
+        <div class="mx-10">
+        <div class="bg-white shadow-lg rounded-md p-6 w-full px-5 my-10">
             <h2 class="text-2xl font-semibold mb-6">Counseling Registration</h2>
             <form class="space-y-4 my-10">
                 <div class="flex items-center space-x-4 my-5">
@@ -45,6 +46,7 @@
                 </div>
             </form>
         </div>
+    </div>
     </x-slot>
 </x-layout>
 <x-footer></x-footer>

@@ -30,7 +30,7 @@
                                 {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" style="color: #18d26e;" href="{{ route('logout') }}"
+                                <a class="dropdown-item" style="color: #b318d2;" href="{{ route('logout') }}"
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
@@ -61,13 +61,12 @@
                     <li><a href="{{ asset('/growthhistory') }}" class="text-gray-800 hover:text-purple-600 font-medium">History Record</a></li>
                     <li><a href="{{ asset('/article') }}" class="text-gray-800 hover:text-purple-600 font-medium">Article</a></li>
                     <li><a href="{{ asset('/appointment') }}" class="text-gray-800 hover:text-purple-600 font-medium">Counseling</a></li>
-                    
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <li class="nav-item dropdown relative">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
                         </a>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" style="color: #18d26e;" href="{{ route('logout') }}"
+                        <div class="dropdown-menu absolute hidden bg-white text-black shadow-md" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-purple-600" href="{{ route('logout') }}"
                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
@@ -76,6 +75,7 @@
                             </form>
                         </div>
                     </li>
+                    
                 </ul>
             @else
                 <a href="{{ route('login') }}" class="text-gray-800 hover:text-purple-600 font-medium block">Log In</a>
@@ -95,4 +95,12 @@
     menuButton.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
     });
+
+        // Menambahkan event listener untuk dropdown
+        document.getElementById('navbarDropdown').addEventListener('click', function(event) {
+        event.preventDefault(); // Menghentikan default action dari link
+        const dropdownMenu = this.nextElementSibling;
+        dropdownMenu.classList.toggle('hidden'); // Mengubah visibilitas dropdown
+    });
+
 </script>
