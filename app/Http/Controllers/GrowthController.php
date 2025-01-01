@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\GrowthRecord;
+use App\Models\User;
 
 class GrowthController extends Controller
 {
@@ -11,7 +13,8 @@ class GrowthController extends Controller
      */
     public function index()
     {
-        //
+        $growthh = GrowthRecord::all();
+        return view('user.growthh', compact('growthh'));
     }
 
     /**
@@ -19,7 +22,8 @@ class GrowthController extends Controller
      */
     public function create()
     {
-        //
+        $growthrecords = GrowthRecord::all();
+        return view('user.growthrecord', compact('growthrecords'));
     }
 
     /**
@@ -27,7 +31,17 @@ class GrowthController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validasi form input
+        $validated = $request->validate([
+            'height' => 'required|string',
+            'weight' => 'required|string',
+            'head' => 'required|string',
+            'date' => 'required|string',
+        ]);
+        $validated['iduser'] = auth()->user()->id;
+
+        GrowthRecord::create($validated);
+        return redirect('/growthhistory')->with('pesan', 'Data Berhasil di Tambah');
     }
 
     /**

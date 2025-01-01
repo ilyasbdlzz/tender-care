@@ -18,10 +18,10 @@
                     <div class="my-3">
                       <ul class="flex justify-between border-b-2 border-[#F0D7E7]">
                         <li class="px-20 text-2xl font-semibold font-nunito border-b-2 border-[#492F59]  text-[#492F59] cursor-pointer">
-                          Growth Record
+                          <a href="{{ asset('growthhistory') }}">Growth Record</a>
                         </li>
                         <li class="px-20  text-2xl font-semibold font-nunito border-b-2 border-transparent hover:border-[#492F59] transition-colors duration-300 text-[#492F59] cursor-pointer">
-                          Health Record
+                          <a href="{{ asset('healthhistory') }}">Health Record</a>
                         </li>
                       </ul>
                     </div>
@@ -39,13 +39,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($growthh as $growth)
                             <tr>
-                                <td class="py-3 px-4 border-b">1</td>
-                                <td class="py-3 px-4 border-b">27 Oktober 2025</td>
-                                <td class="py-3 px-4 border-b">3,7</td>
-                                <td class="py-3 px-4 border-b">52</td>
-                                <td class="py-3 px-4 border-b">36</td>
+                                <td>{{ $growth->id }}</td>
+                                <td>{{ $growth->date }}</td>
+                                <td>{{ $growth->height }}</td>
+                                <td>{{ $growth->weight }}</td>
+                                <td>{{ $growth->head }}</td>
                             </tr>
+                            @endforeach
                             <!-- Add more rows here -->
                         </tbody>
                     </table>

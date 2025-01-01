@@ -18,10 +18,10 @@
                     <div class="my-3">
                       <ul class="flex justify-between border-b-2 border-[#F0D7E7]">
                         <li class="px-20  text-2xl font-semibold font-nunito border-b-2 border-transparent hover:border-[#492F59] transition-colors duration-300 text-[#492F59] cursor-pointer">
-                          Growth Record
+                            <a href="{{ asset('growthhistory') }}">Growth Record</a>
                         </li>
                         <li class="px-20 text-2xl font-semibold font-nunito border-b-2 border-[#492F59]  text-[#492F59] cursor-pointer">
-                          Health Record
+                            <a href="{{ asset('healthhistory') }}">Health Record</a>
                         </li>
                       </ul>
                     </div>
@@ -35,17 +35,17 @@
                                 <th class="py-3 px-4 border-b">Tanggal</th>
                                 <th class="py-3 px-4 border-b">Obat-Obatan</th>
                                 <th class="py-3 px-4 border-b">Alergi</th>
-                                <th class="py-3 px-4 border-b">Imunisasi</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($list_health as $health)
                             <tr>
-                                <td class="py-3 px-4 border-b">1</td>
-                                <td class="py-3 px-4 border-b">27 Oktober 2025</td>
-                                <td class="py-3 px-4 border-b">Paracetamol Syrup</td>
-                                <td class="py-3 px-4 border-b">Susu Sapi</td>
-                                <td class="py-3 px-4 border-b">Hepatitis B</td>
+                                <td>{{ $health->id }}</td>
+                                <td>{{ $health->date }}</td>
+                                <td>{{ $health->drug }}</td>
+                                <td>{{ $health->allergy }}</td>
                             </tr>
+                            @endforeach
                             <!-- Add more rows here -->
                         </tbody>
                     </table>

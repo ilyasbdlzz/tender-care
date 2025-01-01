@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-
-        // Migrasi untuk tabel growthrecord
-        Schema::create('growthrecord', function (Blueprint $table) {
-            $table->id(); // ID untuk growthrecord
-            $table->string('iduser'); // Pastikan ini sesuai dengan tipe data di tabel users
-            $table->decimal('height', 5, 2);
-            $table->decimal('weight', 5, 2);
+        Schema::create('health_records', function (Blueprint $table) {
+            $table->id();
+            $table->string('iduser');
+            $table->text('drug');
+            $table->text('allergy');
             $table->date('date');
             $table->timestamps();
         });
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('growthrecord');
+        Schema::dropIfExists('health_records');
     }
 };

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\HealthRecord;
+use App\Models\User;
 
 class HealthController extends Controller
 {
@@ -11,7 +13,8 @@ class HealthController extends Controller
      */
     public function index()
     {
-        //
+        $list_health = HealthRecord::all();
+        return view('user.healthh', compact('list_health'));
     }
 
     /**
@@ -19,7 +22,8 @@ class HealthController extends Controller
      */
     public function create()
     {
-        //
+        $healthrecords = HealthRecord::all();
+        return view('user.healthrecord', compact('healthrecords'));
     }
 
     /**
@@ -27,7 +31,16 @@ class HealthController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validasi form input
+        $validated = $request->validate([
+            'drug' => 'required|string',
+            'allergy' => 'required|string',
+            'date' => 'required|string',
+        ]);
+        $validated['iduser'] = auth()->user()->id;
+
+        HealthRecord::create($validated);
+        return redirect('/healthhistory')->with('pesan', 'Data Berhasil di Tambah');
     }
 
     /**
