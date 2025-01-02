@@ -18,7 +18,6 @@
                         <thead class="">
                             <tr>
                                 <th class="py-3 px-4 border-b">No</th>
-                                <th class="py-3 px-4 border-b">Nama Pasien</th>
                                 <th class="py-3 px-4 border-b">Nama Psikolog</th>
                                 <th class="py-3 px-4 border-b">Tanggal Konseling</th>
                                 <th class="py-3 px-4 border-b">Jam Konseling</th>
@@ -26,16 +25,18 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($counseling as $consul)
                             <tr>
-                                <td class="py-3 px-4 border-b">1</td>
-                                <td class="py-3 px-4 border-b">Elyas Randi Renaldi</td>
-                                <td class="py-3 px-4 border-b">Ilyas Abdul Aziz</td>
-                                <td class="py-3 px-4 border-b">27 Oktober 2025</td>
-                                <td class="py-3 px-4 border-b">12.00 pm</td>
+                                <td class="py-3 px-4 border-b">{{ $consul->id }}</td>
+                                <td class="py-3 px-4 border-b">{{ $consul->medic->name ?? 'Psikolog tidak ditemukan' }}</td>
+                                <td class="py-3 px-4 border-b">{{ $consul->date }}</td>
+                                <td class="py-3 px-4 border-b">{{ $consul->clock }}</td>
                                 <td class="py-3 px-4"><button type="submit" 
-                                    class="bg-[#319F43] text-white font-semibold py-2 px-4 rounded hover:bg-[#45c75a] shadow-md">Diterima</button>
-                            </div></td>
- 
+                                    class="bg-[#319F43] text-white font-semibold py-2 px-4 rounded hover:bg-[#45c75a] shadow-md">{{ $consul->status }}</button>
+                            </div>
+                        </td>
+                            </tr>
+                            @endforeach
                             </tr>
                             <!-- Add more rows here -->
                         </tbody>

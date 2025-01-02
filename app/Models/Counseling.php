@@ -9,11 +9,25 @@ class Counseling extends Model
 {
     //
     use HasFactory;
+
+    protected $primaryKey = 'id';
+    public $incrementing = false;
     protected $fillable = [
         'iduser',
-        'idtenagamedis',
+        'medis_id',
         'status',
         'date',
         'clock'
     ];
+    protected $table = 'counseling';
+
+    public function medic()
+    {
+        return $this->belongsTo(Medic::class, 'medis_id', 'idmedis');
+    }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'iduser', 'id');
+    }
 }

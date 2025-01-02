@@ -17,22 +17,26 @@
         <nav id="navLinks" class="hidden lg:flex space-x-8">
             @if (Route::has('login'))
                 @auth
-                    <ul class="flex space-x-8">
-                        <li><a href="{{ asset('/') }}" class="text-gray-800 hover:text-purple-600 font-medium">Home</a></li>
+                    <ul class="flex space-x-8 mt-12">
+                        <li><a href="{{ asset('/') }}" class="text-gray-800 hover:text-purple-600 font-medium ">Home</a></li>
                         <li><a href="{{ asset('/healthrecord') }}" class="text-gray-800 hover:text-purple-600 font-medium">Health Record</a></li>
                         <li><a href="{{ asset('/growthrecord') }}" class="text-gray-800 hover:text-purple-600 font-medium">Growth Record</a></li>
                         <li><a href="{{ asset('/growthhistory') }}" class="text-gray-800 hover:text-purple-600 font-medium">History Record</a></li>
                         <li><a href="{{ asset('/article') }}" class="text-gray-800 hover:text-purple-600 font-medium">Article</a></li>
-                        <li><a href="{{ asset('/appointment') }}" class="text-gray-800 hover:text-purple-600 font-medium">Counseling</a></li>
+                        <li><a href="{{ asset('/appointment') }}" class="text-gray-800 hover:text-purple-600 font-medium mr-20">Counseling</a></li>
                         
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <div class="flex items-center">
+                                <img src="{{('../admin/dist/img/user(1).png')}}" alt="Logo" class="w-4 h-4 mr-1"> <!-- Ganti dengan logo Anda -->
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle font-medium text-purple-800" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+                            </div>
+                            <div class="dropdown-menu dropdown-menu-end mt-3" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" style="color: #b318d2;" href="{{ route('logout') }}"
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    <!-- {{ __('Logout') }} -->
+                                    <img src="{{('../admin/dist/img/logout.png')}}" alt="Logo" class="w-4 h-4 mr-1">
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
@@ -62,13 +66,16 @@
                     <li><a href="{{ asset('/article') }}" class="text-gray-800 hover:text-purple-600 font-medium">Article</a></li>
                     <li><a href="{{ asset('/appointment') }}" class="text-gray-800 hover:text-purple-600 font-medium">Counseling</a></li>
                     <li class="nav-item dropdown relative">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
-                        </a>
-                        <div class="dropdown-menu absolute hidden bg-white text-black shadow-md" aria-labelledby="navbarDropdown">
+                        <div class="flex items-center">
+                            <img src="{{('../admin/dist/img/user(1).png')}}" alt="Logo" class="w-4 h-4 mr-1">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle font-medium text-purple-800" href="#" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+                        </div>
+                        <div class="mt-6 pb-3">
                             <a class="dropdown-item text-purple-600" href="{{ route('logout') }}"
                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                               <img src="{{('../admin/dist/img/logout.png')}}" alt="Logo" class="w-4 h-4 mr-1">
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf

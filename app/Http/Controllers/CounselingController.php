@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Counseling;
+use App\Models\Medic;
 use Illuminate\Http\Request;
 
 class CounselingController extends Controller
@@ -12,36 +13,39 @@ class CounselingController extends Controller
      */
     public function index()
     {
-        $counseling = Counseling::all();
+        $counseling = Counseling::with('medic')->get();
         return view('user.appointmentstatus', compact('counseling'));
     }
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        $counselings = Counseling::all();
+        $counselings = Medic::all();
         return view('user.appointment', compact('counselings'));
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
+
         $validated = $request->validate([
             'iduser' => 'required|string',
-            'idtenagamedis' => 'required|date',
+            'medis_id' => 'required|string', // Medic ID
             'clock' => 'required|string',
             'status' => 'required|in:Pending,Approved,Rejected',
             'date' => 'required|date',
         ]);
 
-        $pengajuan_cuti = Counseling::find($id);
-        $pengajuan_cuti->update($validated);
-        return redirect('dashboard/pengajuan_cuti')->with('update', 'Data Berhasil di Perbarui');
+        Counseling::create($validated);
+        return redirect()->route('appointmentstatus')->with('pesan', 'Data Berhasil di Tambah');
     }
+
 
     /**
      * Display the specified resource.

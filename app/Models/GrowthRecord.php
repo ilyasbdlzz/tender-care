@@ -10,4 +10,9 @@ class GrowthRecord extends Model
     //
     use HasFactory;
     protected $fillable = ['iduser', 'height', 'weight', 'head', 'date'];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'iduser', 'id');
+    }
 }

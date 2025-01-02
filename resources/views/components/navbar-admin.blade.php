@@ -1,4 +1,4 @@
-<nav class="main-header navbar navbar-expand" style="background: linear-gradient(to right, #770210, #DD041E);">
+<nav class="main-header navbar navbar-expand" style="background: linear-gradient(to right, #8C52FF, #40217F); color: white;">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
@@ -7,7 +7,7 @@
             </a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/" class="nav-link" style="color: white;">Home</a>
+            <a href="{{ asset('index1') }}" class="nav-link" style="color: white;">Home</a>
         </li>
     </ul>
   

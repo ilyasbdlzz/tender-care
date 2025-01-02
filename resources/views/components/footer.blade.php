@@ -24,7 +24,7 @@
 
         <!-- Manfaat Lumin -->
         <div>
-            <h3 class="text-lg font-semibold text-white mb-3">Manfaat Lumin</h3>
+            <h3 class="text-lg font-semibold text-white mb-3">Manfaat Tender Care</h3>
             <ul class="text-gray-300 text-sm space-y-2 list-disc pl-4">
                 <li>Aksesibilitas 24/7</li>
                 <li>Privasi Terjaga</li>

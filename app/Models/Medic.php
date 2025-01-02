@@ -12,5 +12,5 @@ class Medic extends Model
     protected $primaryKey = 'idmedis';
     public $incrementing = false;
     protected $fillable = ['idmedis', 'name', 'spesialisasi', 'contact'];
+    protected $table = 'tenagamedis';
 }
-

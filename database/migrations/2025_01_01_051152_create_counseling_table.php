@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('counseling', function (Blueprint $table) {
             $table->id(); // Auto-increment primary key
             $table->string('iduser'); // Foreign key to User table
-            $table->string('idtenagamedis'); // Foreign key to MedicalProfessional table
+            $table->string('medis_id'); // Foreign key to MedicalProfessional table
             $table->enum('status', ['Pending', 'Approved', 'Rejected'])->default('Pending'); // Status field with default value
             $table->date('date'); // Counseling date
             $table->time('clock'); // Counseling date
