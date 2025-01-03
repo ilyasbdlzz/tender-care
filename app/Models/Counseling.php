@@ -26,6 +26,7 @@ class Counseling extends Model
         return $this->belongsTo(Medic::class, 'medis_id', 'idmedis');
     }
 
+
     public function users()
     {
         return $this->belongsTo(User::class, 'iduser', 'id');

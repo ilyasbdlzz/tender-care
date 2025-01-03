@@ -44,7 +44,7 @@
           @foreach ($medics as $medis)
           <tr>
               <td>{{ $medis->idmedis }}</td>
-              <td>{{ $medis->name }}</td>
+              <td>{{ $medis->users->name ?? 'Tenaga Medis tidak ditemukan' }}</td>
               <td>{{ $medis->spesialisasi }}</td>
               <td>{{ $medis->contact }}</td>
               <td>

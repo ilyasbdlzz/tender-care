@@ -11,6 +11,11 @@ class Medic extends Model
     use HasFactory;
     protected $primaryKey = 'idmedis';
     public $incrementing = false;
-    protected $fillable = ['idmedis', 'name', 'spesialisasi', 'contact'];
+    protected $fillable = ['idmedis', 'iduser', 'spesialisasi', 'contact'];
     protected $table = 'tenagamedis';
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'iduser', 'id');
+    }
 }

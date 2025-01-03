@@ -16,9 +16,18 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="name" class="col-sm-4 col-form-label">Nama Tenaga Medis</label>
+                        <label for="iduser" class="col-sm-4 col-form-label">Nama Tenaga Medis</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Nama Tenaga Medis">
+                            <select id="iduser" name="iduser" class="form-control">
+                                <option value="">Pilih Nama Tenaga Medis</option>
+                                @if($parents->isEmpty())
+                                    <option value="">Tidak ada data</option>
+                                @else
+                                    @foreach($parents as $parent)
+                                        <option value="{{ $parent->id }}">{{ $parent->name }}</option>
+                                    @endforeach
+                                @endif
+                            </select>
                         </div>
                     </div>
                     <div class="form-group row">

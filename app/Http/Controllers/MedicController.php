@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Medic;
+use App\Models\User;
 
 class MedicController extends Controller
 {
@@ -21,8 +22,9 @@ class MedicController extends Controller
      */
     public function create()
     {
+        $parents = User::where('role', 'TenagaMedis')->get();
         $medic = Medic::all();
-        return view('medic.create', compact('medic'));
+        return view('medic.create', compact('medic', 'parents'));
     }
 
     /**
@@ -32,7 +34,7 @@ class MedicController extends Controller
     {
         //validasi form input
         $validated = $request->validate([
-            'name' => 'required|string',
+            'iduser' => 'required|string',
             'spesialisasi' => 'required|string',
             'contact' => 'required|string',
             'idmedis' => 'required|string',
@@ -56,25 +58,29 @@ class MedicController extends Controller
      */
     public function edit($id)
     {
+        $parents = User::where('role', 'TenagaMedis')->get();
         $medis = Medic::findOrFail($id); // Medic harus merupakan model
-        return view('medic.edit', compact('medis'));
+        return view('medic.edit', compact('medis', 'parents'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Medic $medis)
+    public function update(Request $request, $id)
     {
         $data = $request->validate([
             'idmedis' => 'required|string|max:100',
-            'name' => 'required|string|max:100',
+            'iduser' => 'required|string|max:100',
             'spesialisasi' => 'required|string|max:100',
             'contact' => 'required|string',
         ]);
 
+        $medis = Medic::findOrFail($id);
         $medis->update($data);
-        return redirect('/medic')->with('update', 'Tugas Berhasil di Perbarui');
+
+        return redirect('/medic')->with('update', 'Data Berhasil di Perbarui');
     }
+
 
 
     /**

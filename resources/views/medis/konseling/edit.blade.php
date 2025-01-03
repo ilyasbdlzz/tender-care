@@ -1,6 +1,6 @@
 <x-layout-admin>
-    <x-slot name="page_name_admin">Halaman Kelola Pengajuan Konseling / Edit</x-slot>
-    <x-slot name="page_title">Silakan Perbarui Data Pengajuan Konseling dengan Teliti :</x-slot>
+    <x-slot name="page_name_admin">Halaman Kelola Pengajuan Konseling (Tenaga Medis) / Edit</x-slot>
+    <x-slot name="page_title">Silakan Perbarui Data Pengajuan Konseling (Tenaga Medis) dengan Teliti :</x-slot>
 
     <x-slot name="page_content_admin">
         @if ($errors->any())
@@ -14,10 +14,10 @@
         @endif
         <div class="card">
             <div class="card-header text-white" style="background: #A375FF;">
-                <h4>Edit Kelola Pengajuan Konseling Anda</h4>
-            </div>
+                <h4>Edit Kelola Pengajuan Konseling (Tenaga Medis) Anda</h4>
+            </div> 
             <div class="card-body">
-                <form class="forms-sample" action="{{ url('/conseling/update', $conseling->id) }}" method="post">
+                <form class="forms-sample" action="{{ url('/medis/konseling/update', $conseling->id) }}" method="post">
                     @csrf
                     @method('put')
 
@@ -28,17 +28,13 @@
                     <div class="form-group row">
                         <label for="iduser" class="col-sm-4 col-form-label">Nama Pasien</label>
                         <div class="col-sm-8">
-                            <select id="iduser" name="iduser" class="form-control">
+                            <select id="iduser" name="iduser" class="form-control" readonly>
                                 <option value="">Pilih Nama Pasien</option>
-                                @if($parents->isEmpty())
-                                    <option value="">Tidak ada data</option>
-                                @else
-                                    @foreach($parents as $parent)
-                                        <option value="{{ $parent->id }}" {{ $parent->id == $conseling->iduser ? 'selected' : '' }}>
-                                            {{ $parent->name }}
-                                        </option>
-                                    @endforeach
-                                @endif
+                                @foreach($parents as $parent)
+                                    <option value="{{ $parent->id }}" {{ $parent->id == $conseling->iduser ? 'selected' : '' }}>
+                                        {{ $parent->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -47,17 +43,13 @@
                     <div class="form-group row">
                         <label for="medis_id" class="col-sm-4 col-form-label">Nama Tenaga Medis</label>
                         <div class="col-sm-8">
-                            <select id="medis_id" name="medis_id" class="form-control">
+                            <select id="medis_id" name="medis_id" class="form-control" readonly>
                                 <option value="">Pilih Nama Tenaga Medis</option>
-                                @if($conselings->isEmpty())
-                                    <option value="">Tidak ada data</option>
-                                @else
-                                    @foreach($conselings as $medis)
-                                        <option value="{{ $medis->idmedis }}" {{ $medis->idmedis == $conseling->medis_id ? 'selected' : '' }}>
-                                            {{ $medis->users->name }}
-                                        </option>
-                                    @endforeach
-                                @endif
+                                @foreach($conselings as $medis)
+                                    <option value="{{ $medis->idmedis }}" {{ $medis->idmedis == $conseling->medis_id ? 'selected' : '' }}>
+                                        {{ $medis->users->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -66,7 +58,7 @@
                     <div class="form-group row">
                         <label for="date" class="col-sm-4 col-form-label">Tanggal Konseling</label>
                         <div class="col-sm-8">
-                            <input type="date" class="form-control" id="date" name="date" value="{{ $conseling->date ?? '' }}">
+                            <input type="date" class="form-control" id="date" name="date" value="{{ $conseling->date ?? '' }}" readonly>
                         </div>
                     </div>
 
@@ -74,7 +66,7 @@
                     <div class="form-group row">
                         <label for="clock" class="col-sm-4 col-form-label">Jam Konseling</label>
                         <div class="col-sm-8">
-                            <input type="time" class="form-control" id="clock" name="clock" value="{{ $conseling->clock ?? '' }}">
+                            <input type="time" class="form-control" id="clock" name="clock" value="{{ $conseling->clock ?? '' }}" readonly>
                         </div>
                     </div>
 

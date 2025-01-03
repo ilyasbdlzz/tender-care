@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tenagamedis', function (Blueprint $table) {
             $table->id('idmedis')->primary();
-            $table->string('name', 100);
+            $table->string('iduser', 100);
             $table->string('spesialisasi', 100);
             $table->string('contact', 255);
             $table->timestamps();

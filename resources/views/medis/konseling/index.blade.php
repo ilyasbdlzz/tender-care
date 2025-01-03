@@ -1,3 +1,4 @@
+@use(App\Models\User)
 <x-layout-admin>
     <x-slot name="page_name_admin">Halaman Pengajuan Konseling</x-slot>
     <x-slot name="page_title">Berikut adalah Data Pengajuan :</x-slot>
@@ -30,7 +31,11 @@
           </div>
         @endif
   
-        <a href="{{ url('conseling/create') }}" class="btn btn-primary">+ Tambah Pengajuan</a>
+        @Auth
+        @if (Auth::user()->role == User:: ROLE_ADMIN)
+        <a href="{{ url('medis/konseling/create') }}" class="btn btn-primary">+ Tambah Pengajuan</a>
+        @endif
+        @endauth
         
         <br><br>
         <table class="table table-bordered ">
@@ -45,20 +50,20 @@
             </tr>
             @foreach ($conselings as $conseling)
             <tr>
-                <td>{{ $conseling->id }}</td>
-                <td>{{ $conseling->users->name ?? 'Pasien tidak ditemukan' }}</td>
-                <td>{{ $conseling->medic->users->name ?? 'Psikolog tidak ditemukan' }}</td>
-                <td>{{ $conseling->date }}</td>
-                <td>{{ $conseling->clock }}</td>
-                <td>{{ $conseling->status }}</td>
+              <td>{{ $conseling->id }}</td>
+              <td>{{ $conseling->users->name ?? 'Pasien tidak ditemukan' }}</td>
+              <td>{{ $conseling->medic->users->name ?? 'Psikolog tidak ditemukan' }}</td>
+              <td>{{ $conseling->date }}</td>
+              <td>{{ $conseling->clock }}</td>
+              <td>{{ $conseling->status }}</td>
                 <td>
-                  <a href="{{ route('conseling.show', $conseling->id) }}" class="btn btn-primary text-light">
+                  <a href="{{ route('medis.konseling.show', $conseling->id) }}" class="btn btn-primary text-light">
                       <i class="far fa-eye"></i> Lihat
                   </a>
-                  <a href="{{ url('conseling/edit', $conseling->id) }}" class="btn btn-warning text-dark">
+                  <a href="{{ url('medis/konseling/edit', $conseling->id) }}" class="btn btn-warning text-dark">
                       <i class="far fa-edit"></i> Edit
                   </a>
-                  <form action="{{ url('conseling/destroy', $conseling->id) }}" method="post" class="d-inline">
+                  <form action="{{ url('medis/konseling/destroy', $conseling->id) }}" method="post" class="d-inline">
                       @csrf
                       @method('delete')
                       <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data?')">
@@ -71,4 +76,3 @@
         </table>
     </x-slot>
   </x-layout-admin>
-  

@@ -2,21 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Counseling;
+use App\Models\GrowthRecord;
+use App\Models\HealthRecord;
 use App\Models\Medic;
 use App\Models\User;
-use Illuminate\Http\Request;
 
-class ConselingAdminController extends Controller
+class CounselingMedisController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $conselings = Counseling::with('medic', 'users')->get();
-        return view('conseling.index', compact('conselings'));
+        // Ambil pengguna yang sedang login
+        $user = auth()->user();
+
+        // Periksa jika pengguna adalah TenagaMedis
+        if ($user->role === 'TenagaMedis') {
+            // Ambil konseling yang hanya terkait dengan TenagaMedis yang bernama Ilyas Abdul Aziz
+            $conselings = Counseling::whereHas('medic', function ($query) use ($user) {
+                $query->where('iduser', $user->id);  // Filter berdasarkan ID pengguna yang sedang login
+            })->get();
+        } else {
+            // Ambil semua konseling jika bukan TenagaMedis
+            $conselings = Counseling::all();
+        }
+
+        return view('medis.konseling.index', compact('conselings'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -25,7 +41,7 @@ class ConselingAdminController extends Controller
     {
         $parents = User::where('role', 'parent')->get(); // Ambil data user dengan role parent
         $conselings = Medic::all(); // Ambil semua data dari tabel medis
-        return view('conseling.create', compact('parents', 'conselings'));
+        return view('medis.konseling.create', compact('parents', 'conselings'));
     }
 
     /**
@@ -33,7 +49,7 @@ class ConselingAdminController extends Controller
      */
     public function store(Request $request)
     {
-        //validasi form input
+        // Validasi form input
         $validated = $request->validate([
             'iduser' => 'required|string',
             'medis_id' => 'required|string',
@@ -42,7 +58,7 @@ class ConselingAdminController extends Controller
         ]);
 
         Counseling::create($validated);
-        return redirect('conseling')->with('pesan', 'Data Berhasil di Tambah');
+        return redirect('medis/konseling')->with('pesan', 'Data Berhasil Ditambah');
     }
 
     /**
@@ -50,9 +66,15 @@ class ConselingAdminController extends Controller
      */
     public function show(string $id)
     {
-        $conseling = Counseling::where('id', $id)->first();
-        return view('conseling.show', compact('conseling'));
+        $conseling = Counseling::with('users')->where('id', $id)->first();
+
+        // Ambil data growth record berdasarkan iduser pasien
+        $growths = GrowthRecord::where('iduser', $conseling->iduser)->get();
+        $healths = HealthRecord::where('iduser', $conseling->iduser)->get();
+
+        return view('medis.konseling.show', compact('conseling', 'growths', 'healths'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -62,9 +84,8 @@ class ConselingAdminController extends Controller
         $conseling = Counseling::findOrFail($id);
         $parents = User::where('role', 'parent')->get(); // Ambil data user dengan role parent
         $conselings = Medic::all(); // Ambil semua data dari tabel medis
-        return view('conseling.edit', compact('conseling', 'parents', 'conselings'));
+        return view('medis.konseling.edit', compact('conseling', 'parents', 'conselings'));
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -80,13 +101,9 @@ class ConselingAdminController extends Controller
         ]);
 
         $conseling->update($data);
-        return redirect('/conseling')->with('update', 'Pengajuan Konseling Berhasil di Perbarui');
+        return redirect('medis/konseling')->with('update', 'Pengajuan Konseling Berhasil Diperbarui');
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     */
     /**
      * Remove the specified resource from storage.
      */
@@ -95,6 +112,6 @@ class ConselingAdminController extends Controller
         // Hapus data
         $id->delete();
         // Redirect ke halaman index dengan pesan sukses
-        return redirect('conseling')->with('delete', 'Tugas Berhasil di Hapus!');
+        return redirect('medis/konseling')->with('delete', 'Tugas Berhasil Dihapus!');
     }
 }

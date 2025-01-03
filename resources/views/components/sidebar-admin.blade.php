@@ -1,8 +1,9 @@
+@use(App\Models\User)
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar elevation-4" style="background: linear-gradient(to right, #40217F, #8C52FF); color: white;">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link" style="color: white;">
-        <img src="{{('../admin/dist/img/logo2.png')}}" alt="Forbit Logo" class="brand-image img-circle>
+        <img src="{{ asset('admin/dist/img/logo2.png') }}" alt="Forbit Logo" class="brand-image img-circle">
         <span class="brand-text font-weight-light">Tender Care</span>
     </a>
   
@@ -11,7 +12,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{('../admin/dist/img/logo2.png')}}" class="img-circle elevation-2" alt="User Image">
+                <img src="{{ asset('admin/dist/img/logo2.png') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a href="#" class="d-block" style="color: white;">{{ Auth::user()->name }}</a>
@@ -42,6 +43,8 @@
                                 <p>Dashboard</p>
                             </a>
                         </li>
+                        @Auth
+                        @if (Auth::user()->role == User:: ROLE_ADMIN)
                         <li class="nav-item">
                             <a href="{{ asset('member') }}" class="nav-link" style="color: white;">
                                 <i class="fas fa-user nav-icon" style="color: white;"></i>
@@ -75,18 +78,54 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                @endif
+                @endauth
+
+                    @Auth
+                    @if (Auth::user()->role == User:: ROLE_ADMIN)
+                    <li class="nav-item">
                     <a href="{{ asset('articleadmin') }}" class="nav-link" style="color: white;">
                         <i class="fa-solid fa-file-pen nav-icon" style="color: white;"></i>
                         <p>Data Artikel</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                        @endif
+                        @endauth
+                        @Auth
+                        @if (Auth::user()->role == User:: ROLE_MEDIC)
+                        <li class="nav-item">
+                            <a href="{{ asset('articlemedis') }}" class="nav-link" style="color: white;">
+                                <i class="fa-solid fa-file-pen nav-icon" style="color: white;"></i>
+                                <p>Data Artikel</p>
+                            </a>
+                        </li>
+                        @endif
+                        @endauth
+                        
+
+                
+                    @Auth
+                    @if (Auth::user()->role == User:: ROLE_ADMIN)
+                    <li class="nav-item">
                     <a href="{{ asset('conseling') }}" class="nav-link" style="color: white;">
                         <i class="fa-solid fa-file-pen nav-icon" style="color: white;"></i>
                         <p>Data Konseling</p>
                     </a>
                 </li>
+                        @endif
+                        @endauth
+                        @Auth
+                        @if (Auth::user()->role == User:: ROLE_MEDIC)
+                        <li class="nav-item">
+                            <a href="{{ asset('medis/konseling') }}" class="nav-link" style="color: white;">
+                                <i class="fa-solid fa-file-pen nav-icon" style="color: white;"></i>
+                                <p>Data Konseling</p>
+                            </a>
+                        </li>
+                        @endif
+                        @endauth
+                       
+
                 
             </ul>
         </nav>

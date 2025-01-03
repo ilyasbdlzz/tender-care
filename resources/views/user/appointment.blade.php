@@ -30,13 +30,15 @@
                         <label for="medis_id" class="block text-gray-700 text-sm font-bold w-1/3">
                             Nama Psikolog
                         </label>
-                        <select id="medis_id" name="medis_id" class="form-control shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:ring-[#8C52FF]">
+
+
+                        <select id="medis_id" name="medis_id" class="form-contro shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:ring-[#8C52FF]">
                             <option value="">Pilih Nama Psikolog</option>
                             @if($counselings->isEmpty())
                                 <option value="">Tidak ada data</option>
                             @else
                                 @foreach($counselings as $counseling)
-                                    <option value="{{ $counseling->idmedis }}">{{ $counseling->name }}</option>
+                                    <option value="{{ $counseling->idmedis }}">{{ $counseling->users->name ?? 'Tidak Ditemukan' }}</option>
                                 @endforeach
                             @endif
                         </select>

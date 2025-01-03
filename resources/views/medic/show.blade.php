@@ -15,7 +15,7 @@
                 </div>
                 <div class="row mb-2">
                     <div class="col-sm-4 font-weight-bold">Nama Tenaga Medis</div>
-                    <div class="col-sm-8">: {{ $medis->name }}</div>
+                    <div class="col-sm-8">: {{ $medis->users->name ?? 'Tenaga Medis tidak ditemukan' }}</div>
                 </div>
                 <div class="row mb-2">
                     <div class="col-sm-4 font-weight-bold">Spesialisasi</div>

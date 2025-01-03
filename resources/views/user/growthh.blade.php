@@ -15,16 +15,19 @@
                     <i class="fa-solid fa-pen-to-square text-[5rem] text-[#7342D4]"></i>
                 </div>
 
-                    <div class="my-3">
-                      <ul class="flex justify-between border-b-2 border-[#F0D7E7]">
-                        <li class="px-20 text-2xl font-semibold font-nunito border-b-2 border-[#492F59]  text-[#492F59] cursor-pointer">
+                <div class="my-3">
+                    <ul class="flex justify-between border-b-2 border-[#F0D7E7]">
+                      <li class="px-20  text-2xl font-semibold font-nunito border-b-2 border-transparent hover:border-[#492F59] transition-colors duration-300 text-[#492F59] cursor-pointer">
                           <a href="{{ asset('growthhistory') }}">Growth Record</a>
-                        </li>
-                        <li class="px-20  text-2xl font-semibold font-nunito border-b-2 border-transparent hover:border-[#492F59] transition-colors duration-300 text-[#492F59] cursor-pointer">
+                      </li>
+                      <li class="px-20 text-2xl font-semibold font-nunito border-b-2 border-[#492F59]  text-[#492F59] cursor-pointer">
                           <a href="{{ asset('healthhistory') }}">Health Record</a>
-                        </li>
-                      </ul>
-                    </div>
+                      </li>
+                    </ul>
+                  </div>
+
+
+                  
         
                 <!-- Table Section -->
                 <div class="w-full my-10">

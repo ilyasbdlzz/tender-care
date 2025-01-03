@@ -42,7 +42,7 @@
                                     <option value="">Tidak ada data</option>
                                 @else
                                     @foreach($conselings as $conseling)
-                                        <option value="{{ $conseling->idmedis }}">{{ $conseling->name }}</option>
+                                        <option value="{{ $conseling->idmedis }}">{{ $conseling->users->name }}</option>
                                     @endforeach
                                 @endif
                             </select>

@@ -46,11 +46,7 @@ class ArticleAdminController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        $article = Article::with(['user', 'medic'])->findOrFail($id);
-        return view('article-admin.show', compact('article'));
-    }
+    public function show(string $id) {}
 
     /**
      * Show the form for editing the specified resource.

@@ -16,19 +16,24 @@
                 <h4>Form Tambah Artikel</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('articleadmin.store') }}" method="post">
+                <form action="{{ route('articlemedis.store') }}" method="post">
                     @csrf
-                <div class="form-group row">
-                    <label for="iduser" class="col-sm-4 col-form-label">Nama Pembuat Artikel</label>
-                    <div class="col-sm-8">
-                    <select id="iduser" name="iduser" class="form-control">
-                        <option value="">Pilih Nama Pembuat Artikel</option>
-                        @foreach($parents as $parent)
-                            <option value="{{ $parent->id }}">{{ $parent->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
+
+                    <div class="form-group row">
+                        <label for="iduser" class="col-sm-4 col-form-label">Nama Pembuat Artikel</label>
+                        <div class="col-sm-8">
+                            <select id="iduser" name="iduser" class="form-control" readonly>
+                                <option value="">Pilih Nama Pembuat Artikel</option>
+                                @foreach($users as $parent)
+                                    <option value="{{ $parent->id }}" 
+                                        @if(Auth::user()->id == $parent->id) selected @endif>
+                                        {{ $parent->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    
                     
                     <div class="form-group row">
                         <label for="title" class="col-sm-4 col-form-label">Judul Artikel</label>

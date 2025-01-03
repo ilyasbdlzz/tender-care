@@ -1,9 +1,12 @@
+@use(App\Models\User)
 <header class="bg-[#E8DCFF] shadow-md">
     <div class="container mx-auto flex justify-between items-center py-4 px-6">
         <!-- Logo -->
         <div class="flex items-center">
-            <img src="{{('../admin/dist/img/logo2.png')}}" alt="Logo" class="w-16 h-16 mr-2"> <!-- Ganti dengan logo Anda -->
-            <span class="text-2xl font-semibold text-[#A375FF]">Tender <span class="text-[#8C52FF]">Care</span></span>
+            <img src="{{('../admin/dist/img/logo2.png')}}" alt="Logo" class="w-16 h-16 mr-2">
+            <span class="text-2xl font-semibold text-[#A375FF]">
+                Tender <span class="text-[#8C52FF]">Care</span>
+            </span>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -17,37 +20,45 @@
         <nav id="navLinks" class="hidden lg:flex space-x-8">
             @if (Route::has('login'))
                 @auth
-                    <ul class="flex space-x-8 mt-12">
-                        <li><a href="{{ asset('/') }}" class="text-gray-800 hover:text-purple-600 font-medium ">Home</a></li>
+                    <ul class="flex space-x-8">
+                        <li><a href="{{ asset('/') }}" class="text-gray-800 hover:text-purple-600 font-medium">Home</a></li>
                         <li><a href="{{ asset('/healthrecord') }}" class="text-gray-800 hover:text-purple-600 font-medium">Health Record</a></li>
                         <li><a href="{{ asset('/growthrecord') }}" class="text-gray-800 hover:text-purple-600 font-medium">Growth Record</a></li>
                         <li><a href="{{ asset('/growthhistory') }}" class="text-gray-800 hover:text-purple-600 font-medium">History Record</a></li>
                         <li><a href="{{ asset('/article') }}" class="text-gray-800 hover:text-purple-600 font-medium">Article</a></li>
                         <li><a href="{{ asset('/appointment') }}" class="text-gray-800 hover:text-purple-600 font-medium mr-20">Counseling</a></li>
-                        
-                        <li class="nav-item dropdown">
+
+                        <div class="relative">
                             <div class="flex items-center">
-                                <img src="{{('../admin/dist/img/user(1).png')}}" alt="Logo" class="w-4 h-4 mr-1"> <!-- Ganti dengan logo Anda -->
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle font-medium text-purple-800" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <img src="{{('../admin/dist/img/user(1).png')}}" alt="User" class="w-4 h-4 mr-1">
+                                <a id="dropdownButton" class="nav-link dropdown-toggle font-medium text-purple-800" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ Auth::user()->name }}
                                 </a>
                             </div>
-                            <div class="dropdown-menu dropdown-menu-end mt-3" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" style="color: #b318d2;" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <!-- {{ __('Logout') }} -->
-                                    <img src="{{('../admin/dist/img/logout.png')}}" alt="Logo" class="w-4 h-4 mr-1">
+                        
+                            <!-- Dropdown Menu -->
+                            <div id="dropdownMenu" class="absolute right-0 mt-2 w-48 bg-white rounded shadow-lg hidden z-50">
+                                @auth
+                                @if (Auth::user()->role == User::ROLE_MEDIC || Auth::user()->role == User::ROLE_ADMIN)
+                                    <a href="{{ asset('/admin/index1') }}" class="block px-4 py-2 text-gray-700 hover:bg-purple-100">Dashboard</a>
+                                @endif
+                            @endauth
+                            
+                            <a class=" px-4 py-2 text-gray-700 hover:bg-purple-100 flex items-center" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <img src="{{('../admin/dist/img/logout.png')}}" alt="Logout" class="w-4 h-4 mr-1">
+                                    Logout
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
                             </div>
-                        </li>
+                        </div>
+                        
                     </ul>
                 @else
-                    <a href="{{ route('login') }}" class="text-gray-800 hover:text-purple-600 font-medium block">Log In</a>
+                    <a href="{{ route('login') }}" class="text-gray-800 hover:text-purple-600 font-medium">Log In</a>
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="text-gray-800 hover:text-purple-600 font-medium block">Register</a>
+                        <a href="{{ route('register') }}" class="text-gray-800 hover:text-purple-600 font-medium">Register</a>
                     @endif
                 @endauth
             @endif
@@ -65,24 +76,19 @@
                     <li><a href="{{ asset('/growthhistory') }}" class="text-gray-800 hover:text-purple-600 font-medium">History Record</a></li>
                     <li><a href="{{ asset('/article') }}" class="text-gray-800 hover:text-purple-600 font-medium">Article</a></li>
                     <li><a href="{{ asset('/appointment') }}" class="text-gray-800 hover:text-purple-600 font-medium">Counseling</a></li>
-                    <li class="nav-item dropdown relative">
-                        <div class="flex items-center">
-                            <img src="{{('../admin/dist/img/user(1).png')}}" alt="Logo" class="w-4 h-4 mr-1">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle font-medium text-purple-800" href="#" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
-                        </div>
-                        <div class="mt-6 pb-3">
-                            <a class="dropdown-item text-purple-600" href="{{ route('logout') }}"
-                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                               <img src="{{('../admin/dist/img/logout.png')}}" alt="Logo" class="w-4 h-4 mr-1">
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
+                    <li class="flex items-center">
+                        <img src="{{('../admin/dist/img/user(1).png')}}" alt="User" class="w-4 h-4 mr-1">
+                        <a id="navbarDropdown" class="text-purple-800 font-medium" href="#">{{ Auth::user()->name }}</a>
                     </li>
-                    
+                    <li>
+                        <a class="text-purple-600 flex items-center" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <img src="{{('../admin/dist/img/logout.png')}}" alt="Logout" class="w-4 h-4 mr-1">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                            @csrf
+                        </form>
+                    </li>
                 </ul>
             @else
                 <a href="{{ route('login') }}" class="text-gray-800 hover:text-purple-600 font-medium block">Log In</a>
@@ -98,16 +104,30 @@
 <script>
     const menuButton = document.getElementById('menuButton');
     const mobileMenu = document.getElementById('mobileMenu');
-    
+    const navbarDropdown = document.getElementById('navbarDropdown');
+
     menuButton.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
     });
 
-        // Menambahkan event listener untuk dropdown
-        document.getElementById('navbarDropdown').addEventListener('click', function(event) {
-        event.preventDefault(); // Menghentikan default action dari link
-        const dropdownMenu = this.nextElementSibling;
-        dropdownMenu.classList.toggle('hidden'); // Mengubah visibilitas dropdown
+    navbarDropdown?.addEventListener('click', (event) => {
+        event.preventDefault();
+        const dropdownMenu = navbarDropdown.nextElementSibling;
+        dropdownMenu.classList.toggle('hidden');
+    });
+
+    const dropdownButton = document.getElementById('dropdownButton');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    dropdownButton.addEventListener('click', () => {
+        dropdownMenu.classList.toggle('hidden');
+    });
+
+    // Close dropdown if clicked outside
+    document.addEventListener('click', (event) => {
+        if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            dropdownMenu.classList.add('hidden');
+        }
     });
 
 </script>

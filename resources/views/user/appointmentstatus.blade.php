@@ -25,10 +25,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($counseling as $consul)
+                            @foreach ($counselings as $consul)
                             <tr>
                                 <td class="py-3 px-4 border-b">{{ $consul->id }}</td>
-                                <td class="py-3 px-4 border-b">{{ $consul->medic->name ?? 'Psikolog tidak ditemukan' }}</td>
+                                    <td class="py-3 px-4 border-b">
+                                        {{ $consul->medic->users->name ?? 'Psikolog tidak ditemukan' }}
+                                    </td>
                                 <td class="py-3 px-4 border-b">{{ $consul->date }}</td>
                                 <td class="py-3 px-4 border-b">{{ $consul->clock }}</td>
                                 <td class="py-3 px-4"><button type="submit" 
