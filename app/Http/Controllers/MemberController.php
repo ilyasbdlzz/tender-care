@@ -35,6 +35,7 @@ class MemberController extends Controller
             'name' => 'required|string',
             'email' => 'required|string',
             'contact' => 'required|string',
+            'password' => 'required|string',
         ]);
 
         User::create($validated);

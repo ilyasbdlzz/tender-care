@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Counseling;
-use App\Models\Medic;
+use App\Models\GrowthRecord;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class ConselingAdminController extends Controller
+class GrowthAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $conselings = Counseling::all();
-        return view('conseling.index', compact('conselings'));
+        $growths = GrowthRecord::all();
+        return view('growth-admin.index', compact('growths'));
     }
 
     /**
@@ -24,8 +23,8 @@ class ConselingAdminController extends Controller
     public function create()
     {
         $parents = User::where('role', 'parent')->get(); // Ambil data user dengan role parent
-        $conselings = Medic::all(); // Ambil semua data dari tabel medis
-        return view('conseling.create', compact('parents', 'conselings'));
+        $growth = GrowthRecord::all();
+        return view('growth-admin.create', compact('growth', 'parents'));
     }
 
     /**
@@ -36,22 +35,26 @@ class ConselingAdminController extends Controller
         //validasi form input
         $validated = $request->validate([
             'iduser' => 'required|string',
-            'medis_id' => 'required|string',
+            'height' => 'required|string',
+            'weight' => 'required|string',
+            'head' => 'required|string',
             'date' => 'required|string',
-            'clock' => 'required|string',
         ]);
 
-        Counseling::create($validated);
-        return redirect('conseling')->with('pesan', 'Data Berhasil di Tambah');
+        GrowthRecord::create($validated);
+        return redirect('/growth')->with('pesan', 'Data Berhasil di Tambah');
     }
 
     /**
      * Display the specified resource.
      */
+    /**
+     * Display the specified resource.
+     */
     public function show(string $id)
     {
-        $conseling = Counseling::where('id', $id)->first();
-        return view('conseling.show', compact('conseling'));
+        $growth = GrowthRecord::where('id', $id)->first();
+        return view('growth-admin.show', compact('growth'));
     }
 
     /**
@@ -59,28 +62,26 @@ class ConselingAdminController extends Controller
      */
     public function edit($id)
     {
-        $conseling = Counseling::findOrFail($id);
+        $growth = GrowthRecord::findOrFail($id); // Medic harus merupakan model
         $parents = User::where('role', 'parent')->get(); // Ambil data user dengan role parent
-        $conselings = Medic::all(); // Ambil semua data dari tabel medis
-        return view('conseling.edit', compact('conseling', 'parents', 'conselings'));
+        return view('growth-admin.edit', compact('growth', 'parents'));
     }
-
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Counseling $conseling)
+    public function update(Request $request, GrowthRecord $growth)
     {
         $data = $request->validate([
-            'iduser' => 'required|string|max:100',
-            'status' => 'required|string|max:100',
-            'medis_id' => 'required|string|max:100',
+            'iduser' => 'required|string',
+            'height' => 'required|string',
+            'weight' => 'required|string',
+            'head' => 'required|string',
             'date' => 'required|string',
-            'clock' => 'required|string',
         ]);
 
-        $conseling->update($data);
-        return redirect('/conseling')->with('update', 'Pengajuan Konseling Berhasil di Perbarui');
+        $growth->update($data);
+        return redirect('/growth')->with('update', 'Data Pertumbuhan Anak Berhasil di Perbarui');
     }
 
 
@@ -90,11 +91,11 @@ class ConselingAdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Counseling $id)
+    public function destroy(GrowthRecord $id)
     {
         // Hapus data
         $id->delete();
         // Redirect ke halaman index dengan pesan sukses
-        return redirect('conseling')->with('delete', 'Tugas Berhasil di Hapus!');
+        return redirect('growth')->with('delete', 'Data Berhasil di Hapus!');
     }
 }

@@ -30,7 +30,7 @@
         </div>
       @endif
 
-      <a href="{{ url('create') }}" class="btn btn-primary">+ Tambah Tenaga Medis</a>
+      <a href="{{ url('medic/create') }}" class="btn btn-primary">+ Tambah Tenaga Medis</a>
       
       <br><br>
       <table class="table table-bordered ">

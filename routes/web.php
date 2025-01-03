@@ -5,7 +5,11 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HealthController;
 use App\Http\Controllers\GrowthController;
+use App\Http\Controllers\GrowthAdminController;
 use App\Http\Controllers\CounselingController;
+use App\Http\Controllers\ArticleAdminConntroller;
+use App\Http\Controllers\ArticleAdminController;
+use App\Http\Controllers\HealthAdminController;
 use App\Http\Controllers\MedicController;
 use App\Http\Controllers\MemberController;
 
@@ -57,15 +61,37 @@ Route::prefix('conseling')->group(function () {
     Route::delete('/destroy/{id}', [ConselingAdminController::class, 'destroy']);
 });
 
-// Conseling Routes with Prefix
+// Growth Routes with Prefix
 Route::prefix('growth')->group(function () {
-    Route::get('/', [GrowthController::class, 'index'])->name('growth');
-    Route::get('/create', [GrowthController::class, 'create'])->name('growth.create');
-    Route::post('/', [GrowthController::class, 'store'])->name('growth.store');
-    Route::get('/edit/{growth}', [GrowthController::class, 'edit']);
-    Route::put('/update/{growth}', [GrowthController::class, 'update']);
-    Route::get('/{id}', [GrowthController::class, 'show'])->name('growth.show');
-    Route::delete('/destroy/{id}', [GrowthController::class, 'destroy']);
+    Route::get('/', [GrowthAdminController::class, 'index'])->name('growth');
+    Route::get('/create', [GrowthAdminController::class, 'create'])->name('growth.create');
+    Route::post('/', [GrowthAdminController::class, 'store'])->name('growth.store');
+    Route::get('/edit/{growth}', [GrowthAdminController::class, 'edit']);
+    Route::put('/update/{growth}', [GrowthAdminController::class, 'update']);
+    Route::get('/{id}', [GrowthAdminController::class, 'show'])->name('growth.show');
+    Route::delete('/destroy/{id}', [GrowthAdminController::class, 'destroy']);
+});
+
+// Health Routes with Prefix
+Route::prefix('health')->group(function () {
+    Route::get('/', [HealthAdminController::class, 'index'])->name('health');
+    Route::get('/create', [HealthAdminController::class, 'create'])->name('health.create');
+    Route::post('/', [HealthAdminController::class, 'store'])->name('health.store');
+    Route::get('/edit/{health}', [HealthAdminController::class, 'edit']);
+    Route::put('/update/{health}', [HealthAdminController::class, 'update']);
+    Route::get('/{id}', [HealthAdminController::class, 'show'])->name('health.show');
+    Route::delete('/destroy/{id}', [HealthAdminController::class, 'destroy']);
+});
+
+// Artikel Routes with Prefix
+Route::prefix('articleadmin')->group(function () {
+    Route::get('/', [ArticleAdminController::class, 'index'])->name('articleadmin');
+    Route::get('/create', [ArticleAdminController::class, 'create'])->name('articleadmin.create');
+    Route::post('/', [ArticleAdminController::class, 'store'])->name('articleadmin.store');
+    Route::get('/edit/{article}', [ArticleAdminController::class, 'edit']);
+    Route::put('/update/{article}', [ArticleAdminController::class, 'update']);
+    Route::get('/{id}', [ArticleAdminController::class, 'show'])->name('articleadmin.show');
+    Route::delete('/destroy/{id}', [ArticleAdminController::class, 'destroy']);
 });
 
 

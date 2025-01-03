@@ -41,6 +41,15 @@
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
 
+                <!-- Contact Input -->
+                <div class="relative w-full mt-4">
+                    <i class="fas fa-phone absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+                    <input id="contact" type="text" name="contact" value="{{ old('contact') }}" required
+                        placeholder="Nomor Handphone" class="w-full px-12 py-3 font-semibold font-nunito text-lg border shadow-md border-gray-300 bg-[#FFFFFF] rounded-3xl focus:outline-none focus:ring-2 focus:ring-[#492F59]">
+                    <x-input-error :messages="$errors->get('contact')" class="mt-2" />
+                </div>                
+
+
                 <!-- Email Input -->
                 <div class="relative w-full mt-4">
                     <i class="fas fa-envelope absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"></i>

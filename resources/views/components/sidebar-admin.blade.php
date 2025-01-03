@@ -15,6 +15,7 @@
             </div>
             <div class="info">
                 <a href="#" class="d-block" style="color: white;">{{ Auth::user()->name }}</a>
+                <span class="text-light"> Role: {{Auth::user()->role}}</span>
             </div>
         </div>
   
@@ -63,7 +64,7 @@
                     </a>
                     <ul class="dropdown-menu bg-dark">
                         <li>
-                            <a href="{{ asset('health-record') }}" class="dropdown-item text-white">
+                            <a href="{{ asset('health') }}" class="dropdown-item text-white">
                                 <i class="fa-solid fa-notes-medical me-2"></i> Health Record
                             </a>
                         </li>
@@ -75,7 +76,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ asset('scheduleTask') }}" class="nav-link" style="color: white;">
+                    <a href="{{ asset('articleadmin') }}" class="nav-link" style="color: white;">
                         <i class="fa-solid fa-file-pen nav-icon" style="color: white;"></i>
                         <p>Data Artikel</p>
                     </a>

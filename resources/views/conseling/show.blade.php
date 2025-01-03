@@ -11,11 +11,11 @@
             <div class="card-body">
                 <div class="row mb-2">
                     <div class="col-sm-4 font-weight-bold">Nama Pasien</div>
-                    <div class="col-sm-8">: {{ $conseling->iduser }}</div>
+                    <div class="col-sm-8">: {{ $conseling->users->name ?? 'Pasien tidak ditemukan' }}</div>
                 </div>
                 <div class="row mb-2">
                     <div class="col-sm-4 font-weight-bold">Nama Tenaga Medis</div>
-                    <div class="col-sm-8">: {{ $conseling->medis_id }}</div>
+                    <div class="col-sm-8">:  {{ $conseling->medic->name ?? 'Psikolog tidak ditemukan' }}</div>
                 </div>
                 <div class="row mb-2">
                     <div class="col-sm-4 font-weight-bold">Tanggal Konseling</div>

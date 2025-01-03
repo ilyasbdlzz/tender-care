@@ -40,6 +40,7 @@
                 <th>Berat Badan</th>
                 <th>Tinggi Badan</th>
                 <th>Lingkar Kepala</th>
+                <th>Tanggal Input</th>
                 <th>Aksi</th>
             </tr>
             @foreach ($growths as $growth)
@@ -49,6 +50,7 @@
                 <td>{{ $growth->weight }}</td>
                 <td>{{ $growth->height }}</td>
                 <td>{{ $growth->head }}</td>
+                <td>{{ $growth->date }}</td>
                 <td>
                   <a href="{{ route('growth.show', $growth->id) }}" class="btn btn-primary text-light">
                       <i class="far fa-eye"></i> Lihat
