@@ -115,83 +115,48 @@
         </section>
 
 
-                <!-- Article Section -->
-                <section class="bg-[#DDCBFF] py-8">
-                    <div class="container mx-auto px-6 lg:px-12">
-                    <!-- Section Title -->
-                    <div class="border-l-4 border-[#623E76] pl-4 mb-6">
-                        <h1 class="font-nunito font-bold text-3xl">What New Today</h1>
-                    </div>
-                
-                    <!-- Content Grid -->
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        <!-- Left Large Column -->
-                        <div class="bg-white rounded-lg shadow-md p-6">
-                        <!-- Placeholder for content -->
-                        <p class="text-center text-gray-500">Large article section (add content here).</p>
+        <!-- Article Section -->
+<section class="bg-[#DDCBFF] py-8">
+    <div class="container mx-auto px-6 lg:px-12">
+        <div class="border-l-4 border-[#623E76] pl-4 mb-6">
+            <h1 class="font-nunito font-bold text-3xl">What New Today</h1>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Large Article Section -->
+            <div class="col-span-1 lg:col-span-1 bg-white p-6 rounded-lg shadow-md">
+                <div class="h-48 bg-gray-100 flex items-center justify-center rounded-lg">
+                    <p class="text-gray-500">Large article section (add content here).</p>
+                </div>
+            </div>
+
+            <!-- Smaller Articles Section -->
+            <div class="flex flex-col gap-4">
+                @forelse ($articles as $article)
+                    <div class="flex bg-white p-4 rounded-lg shadow-md">
+                        <div class="w-24 h-24 bg-gray-200 flex-shrink-0">
+                            <img src="{{ asset($article->image) }}" class="w-full h-full object-cover rounded-lg" alt="{{ $article->title }}">
                         </div>
-                
-                        <!-- Right Column -->
-                        <div class="lg:col-span-2 grid gap-6">
-                        <!-- Article Card -->
-                        <div class="flex items-start">
-                            <!-- Thumbnail -->
-                            <div class="bg-gray-200 rounded-lg w-2/5 h-28"></div>
-                            <!-- Article Details -->
-                            <div class="ml-4 flex flex-col justify-between">
-                            <!-- Category Label -->
-                            <span class="bg-[#88A8CD] text-white font-nunito w-3/12 text-center font-semibold rounded-full px-3 py-1 text-xs">
-                                Health
+                        <div class="ml-4">
+                            <span class="bg-[#88A8CD] text-white font-nunito text-center font-semibold rounded-full px-3 py-1 text-xs">
+                                {{ $article->category }}
                             </span>
-                            <!-- Title -->
-                            <h2 class="mt-2 text-base font-semibold">
-                                Viral! Fufufafa adalah Gibran Rakabuming
+                            <h2 class="mt-2 text-sm font-semibold text-gray-800">
+                                {{ $article->title }}
                             </h2>
-                            <!-- Date -->
-                            <div class="flex items-center text-xs text-gray-500 mt-2">
+                            <div class="flex items-center text-xs text-gray-500 mt-1">
                                 <i class="fas fa-calendar"></i>
-                                <p class="ml-1">October 22, 2024</p>
+                                <p class="ml-1">{{ $article->created_at->format('F d, Y') }}</p>
                             </div>
-                            </div>
-                        </div>
-                
-                        <!-- Repeat Article Card -->
-                        <div class="flex items-start">
-                            <div class="bg-gray-200 rounded-lg w-2/5 h-28"></div>
-                            <div class="ml-4 flex flex-col justify-between">
-                            <span class="bg-[#88A8CD] text-white font-nunito w-3/12 text-center font-semibold rounded-full px-3 py-1 text-xs">
-                                Health
-                            </span>
-                            <h2 class="mt-2 text-base font-semibold">
-                                Viral! Fufufafa adalah Gibran Rakabuming
-                            </h2>
-                            <div class="flex items-center text-xs text-gray-500 mt-2">
-                                <i class="fas fa-calendar"></i>
-                                <p class="ml-1">October 22, 2024</p>
-                            </div>
-                            </div>
-                        </div>
-                
-                        <!-- Repeat Article Card -->
-                        <div class="flex items-start">
-                            <div class="bg-gray-200 rounded-lg w-2/5 h-28"></div>
-                            <div class="ml-4 flex flex-col justify-between">
-                            <span class="bg-[#88A8CD] text-white font-nunito w-3/12 text-center font-semibold rounded-full px-3 py-1 text-xs">
-                                Health
-                            </span>
-                            <h2 class="mt-2 text-base font-semibold">
-                                Viral! Fufufafa adalah Gibran Rakabuming
-                            </h2>
-                            <div class="flex items-center text-xs text-gray-500 mt-2">
-                                <i class="fas fa-calendar"></i>
-                                <p class="ml-1">October 22, 2024</p>
-                            </div>
-                            </div>
-                        </div>
                         </div>
                     </div>
-                    </div>
-                </section>
+                @empty
+                    <p class="text-center text-gray-500">Belum ada artikel yang tersedia.</p>
+                @endforelse
+            </div>
+        </div>
+    </div>
+</section>
+
     </x-slot>
     
 </x-layout>

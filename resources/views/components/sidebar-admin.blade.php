@@ -2,7 +2,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar elevation-4" style="background: linear-gradient(to right, #40217F, #8C52FF); color: white;">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link" style="color: white;">
+    <a href="{{url ('/')}}" class="brand-link" style="color: white;">
         <img src="{{ asset('admin/dist/img/logo2.png') }}" alt="Forbit Logo" class="brand-image img-circle">
         <span class="brand-text font-weight-light">Tender Care</span>
     </a>

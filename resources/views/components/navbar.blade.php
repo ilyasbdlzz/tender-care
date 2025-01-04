@@ -38,6 +38,10 @@
                                 </svg>
                             </button>
                             <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
+                                <a href="{{ asset('/index1') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+                                    <img src="{{('../admin/dist/img/dashboard.png')}}" alt="Dashboard" class="w-4 h-4 mr-2 inline">
+                                    Dashboard
+                                </a>
                                 <a href="{{ route('logout') }}" 
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                                    class="block px-4 py-2 text-red-600 hover:bg-gray-100">
@@ -48,6 +52,7 @@
                                     @csrf
                                 </form>
                             </div>
+                            
                         </div>
                         
                     </ul>
@@ -77,6 +82,7 @@
                 <a href="{{ route('login') }}" class="text-gray-800 hover:text-purple-600 font-medium block">Log In</a>
                 @if (Route::has('register'))
                     <a href="{{ route('register') }}" class="text-gray-800 hover:text-purple-600 font-medium block">Register</a>
+                    
                 @endif
             @endauth
         @endif

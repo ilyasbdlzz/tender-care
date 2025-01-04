@@ -14,9 +14,8 @@ use App\Http\Controllers\HealthAdminController;
 use App\Http\Controllers\MedicController;
 use App\Http\Controllers\MemberController;
 
-Route::get('/', function () {
-    return view('user/index');
-})->name('user');
+Route::get('/', [ArticleAdminController::class, 'showHomepage'])->name('user');
+
 
 // Routes Admin/Tenage Medis
 

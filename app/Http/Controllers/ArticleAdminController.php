@@ -16,7 +16,11 @@ class ArticleAdminController extends Controller
         $articles = Article::with(['user'])->get(); // Ambil data artikel beserta relasi
         return view('article-admin.index', compact('articles'));
     }
-
+    public function showHomepage()
+    {
+        $articles = \App\Models\Article::latest()->take(5)->get(); // Ambil data artikel
+        return view('user.index', compact('articles')); // Kirim data ke view
+    }     
     /**
      * Show the form for creating a new resource.
      */
