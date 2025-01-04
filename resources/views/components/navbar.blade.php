@@ -3,7 +3,7 @@
     <div class="container mx-auto flex justify-between items-center py-4 px-6">
         <!-- Logo -->
         <div class="flex items-center">
-            <img src="{{ asset('admin/dist/img/Logo2.png') }}" alt="Logo" class="w-16 h-16 mr-2">
+            <img src="{{ asset('admin/dist/img/logo2.png') }}" alt="Logo" class="w-16 h-16 mr-2">
             <span class="text-2xl font-semibold text-[#A375FF]">
                 Tender <span class="text-[#8C52FF]">Care</span>
             </span>
