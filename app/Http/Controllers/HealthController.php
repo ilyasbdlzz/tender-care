@@ -13,9 +13,16 @@ class HealthController extends Controller
      */
     public function index()
     {
-        $list_health = HealthRecord::all();
+        // Ambil ID pengguna yang sedang login
+        $userId = auth()->id();
+
+        // Dapatkan data HealthRecord milik pengguna yang sedang login
+        $list_health = HealthRecord::where('iduser', $userId)->get();
+
+        // Tampilkan data ke view
         return view('user.healthh', compact('list_health'));
     }
+
 
     /**
      * Show the form for creating a new resource.

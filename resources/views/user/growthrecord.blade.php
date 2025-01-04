@@ -32,20 +32,22 @@
                  <!-- Tinggi Badan Input -->
                  <div class="mb-6 w-full flex">
                     <label for="weight" class="block text-xl font-semibold mb-2 text-[#4A2C7D] w-1/3">Berat Badan</label>
-                    <input type="number" id="weight" name="weight" class="w-full shadow-md p-4 border border-gray-300 rounded-lg bg-[#F3EEFF] focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Masukkan berat badan">
+                    <input type="number" id="weight" name="weight" step="0.01" class="w-full shadow-md p-4 border border-gray-300 rounded-lg bg-[#F3EEFF] focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Masukkan berat badan">
+
                 </div>
 
                 <!-- Tinggi Badan Input -->
                 <div class="mb-6 w-full flex">
                     <label for="height" class="block text-xl font-semibold mb-2 text-[#4A2C7D] w-1/3">Tinggi Badan</label>
-                    <input type="number" id="height" name="height" class="w-full shadow-md p-4 border border-gray-300 rounded-lg bg-[#F3EEFF] focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Masukkan tinggi badan">
+                    <input type="number" id="height" name="height" step="0.01" class="w-full shadow-md p-4 border border-gray-300 rounded-lg bg-[#F3EEFF] focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Masukkan berat badan">
                 </div>
 
                 <!-- Lingkar Kepala Input -->
                 <div class="mb-6 w-full flex">
 
                     <label for="head" class="block text-xl font-semibold mb-2 text-[#4A2C7D] w-1/3">Lingkar Kepala</label>
-                    <input type="number" id="head" name="head" class="w-full shadow-md p-4 border border-gray-300 rounded-lg bg-[#F3EEFF] focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Masukkan lingkar kepala">
+                    <input type="number" id="head" name="head" step="0.01" class="w-full shadow-md p-4 border border-gray-300 rounded-lg bg-[#F3EEFF] focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Masukkan berat badan">
+
                 </div>
 
                         <!-- Tanggal Input -->

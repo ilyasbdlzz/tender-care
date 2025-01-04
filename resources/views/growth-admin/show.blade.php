@@ -15,15 +15,15 @@
                 </div>
                 <div class="row mb-2">
                     <div class="col-sm-4 font-weight-bold">Berat Badan</div>
-                    <div class="col-sm-8">: {{ $growth->weight }}</div>
+                    <div class="col-sm-8">: {{ $growth->weight }} kg</div>
                 </div>
                 <div class="row mb-2">
                     <div class="col-sm-4 font-weight-bold">Tinggi Badan</div>
-                    <div class="col-sm-8">: {{ $growth->height }}</div>
+                    <div class="col-sm-8">: {{ $growth->height }} cm</div>
                 </div>
                 <div class="row mb-2">
                     <div class="col-sm-4 font-weight-bold">Lingkar Kepala</div>
-                    <div class="col-sm-8">: {{ $growth->head }}</div>
+                    <div class="col-sm-8">: {{ $growth->head }} cm</div>
                 </div>
                 <div class="row mb-2">
                     <div class="col-sm-4 font-weight-bold">Tanggal Input</div>

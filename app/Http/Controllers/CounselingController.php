@@ -13,10 +13,15 @@ class CounselingController extends Controller
      */
     public function index()
     {
-        $counseling = Medic::all();
-        $counselings = Counseling::with('medic')->get();
-        return view('user.appointmentstatus', compact('counselings', 'counseling'));
+        // Ambil ID pengguna yang sedang login
+        $userId = auth()->id();
+
+        // Dapatkan data counseling milik pengguna yang sedang login
+        $counselings = Counseling::with('medic')->where('iduser', $userId)->get();
+
+        return view('user.appointmentstatus', compact('counselings'));
     }
+
 
 
     /**

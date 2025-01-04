@@ -47,10 +47,10 @@
             <tr>
                 <td>{{ $growth->id }}</td>
                 <td>{{ $growth->users->name ?? 'Pasien tidak ditemukan' }}</td>
-                <td>{{ $growth->weight }}</td>
-                <td>{{ $growth->height }}</td>
-                <td>{{ $growth->head }}</td>
-                <td>{{ $growth->date }}</td>
+                <td>{{ $growth->weight }} kg</td>
+                <td>{{ $growth->height }} cm</td>
+                <td>{{ $growth->head }} cm</td>
+                <td>{{ $growth->date }} cm</td>
                 <td>
                   <a href="{{ route('growth.show', $growth->id) }}" class="btn btn-primary text-light">
                       <i class="far fa-eye"></i> Lihat

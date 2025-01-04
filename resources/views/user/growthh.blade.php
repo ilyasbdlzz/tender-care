@@ -17,10 +17,10 @@
 
                 <div class="my-3">
                     <ul class="flex justify-between border-b-2 border-[#F0D7E7]">
-                      <li class="px-20  text-2xl font-semibold font-nunito border-b-2 border-transparent hover:border-[#492F59] transition-colors duration-300 text-[#492F59] cursor-pointer">
+                      <li class="px-20 text-2xl font-semibold font-nunito border-b-2 border-[#492F59]  text-[#492F59] cursor-pointer" >
                           <a href="{{ asset('growthhistory') }}">Growth Record</a>
                       </li>
-                      <li class="px-20 text-2xl font-semibold font-nunito border-b-2 border-[#492F59]  text-[#492F59] cursor-pointer">
+                      <li class="px-20  text-2xl font-semibold font-nunito border-b-2 border-transparent hover:border-[#492F59] transition-colors duration-300 text-[#492F59] cursor-pointer">
                           <a href="{{ asset('healthhistory') }}">Health Record</a>
                       </li>
                     </ul>
@@ -41,18 +41,16 @@
                                 <th class="py-3 px-4 border-b">Lingkar Kepala (cm)</th>
                             </tr>
                         </thead>
-                        <tbody>
                             @foreach ($growthh as $growth)
                             <tr>
                                 <td>{{ $growth->id }}</td>
                                 <td>{{ $growth->date }}</td>
-                                <td>{{ $growth->height }}</td>
-                                <td>{{ $growth->weight }}</td>
-                                <td>{{ $growth->head }}</td>
+                                <td>{{ $growth->height }} kg</td>
+                                <td>{{ $growth->weight }} cm</td>
+                                <td>{{ $growth->head }} cm</td>
                             </tr>
                             @endforeach
                             <!-- Add more rows here -->
-                        </tbody>
                     </table>
                 </div>
             </div>

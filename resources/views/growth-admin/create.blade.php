@@ -27,19 +27,19 @@
                     <div class="form-group row">
                         <label for="weight" class="col-sm-4 col-form-label">Berat Badan</label>
                         <div class="col-sm-8">
-                            <input type="number" class="form-control" id="weight" name="weight" placeholder="Masukkan Berat Badan">
+                            <input type="number" step="0.01" class="form-control" id="weight" name="weight" placeholder="Masukkan Berat Badan">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="height" class="col-sm-4 col-form-label">Tinggi Badan</label>
                         <div class="col-sm-8">
-                            <input type="number" class="form-control" id="height" name="height" placeholder="Masukkan Tinggi Badan">
+                            <input type="number" step="0.01" class="form-control" id="height" name="height" placeholder="Masukkan Tinggi Badan">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="head" class="col-sm-4 col-form-label">Lingkar Kepala</label>
                         <div class="col-sm-8">
-                            <input type="number" class="form-control" id="head" name="head" placeholder="Masukkan Lingkar Kepala">
+                            <input type="number" step="0.01" class="form-control" id="head" name="head" placeholder="Masukkan Lingkar Kepala">
                         </div>
                     </div>
                     <div class="form-group row">

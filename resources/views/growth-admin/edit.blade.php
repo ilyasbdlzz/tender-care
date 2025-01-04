@@ -47,21 +47,21 @@
                             <div class="form-group row">
                                 <label for="weight" class="col-sm-4 col-form-label">Berat Badan</label>
                                 <div class="col-sm-8">
-                                    <input type="number" class="form-control" id="weight" name="weight" placeholder="Masukkan Nama Berat" Badan value="{{ $growth->weight ?? '' }}">
+                                    <input type="number" step="0.01" class="form-control" id="weight" name="weight" placeholder="Masukkan Nama Berat" Badan value="{{ $growth->weight ?? '' }}">
                                 </div>
                             </div>
         
                             <div class="form-group row">
                                 <label for="height" class="col-sm-4 col-form-label">Tinggi Badan</label>
                                 <div class="col-sm-8">
-                                    <input type="number" class="form-control" id="height" name="height" placeholder="Masukkan Tinggi Badan" value="{{ $growth->height ?? '' }}">
+                                    <input type="number" step="0.01" class="form-control" id="height" name="height" placeholder="Masukkan Tinggi Badan" value="{{ $growth->height ?? '' }}">
                                 </div>
                             </div>
         
                             <div class="form-group row">
                                 <label for="head" class="col-sm-4 col-form-label">Lingkar Kepala</label>
                                 <div class="col-sm-8">
-                                    <input type="number" class="form-control" id="head" name="head" placeholder="Masukkan Lingkar Kepala" value="{{ $growth->head ?? '' }}">
+                                    <input type="number" step="0.01" class="form-control" id="head" name="head" placeholder="Masukkan Lingkar Kepala" value="{{ $growth->head ?? '' }}">
                                 </div>
                             </div>
 

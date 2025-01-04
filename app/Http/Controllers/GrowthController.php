@@ -13,9 +13,16 @@ class GrowthController extends Controller
      */
     public function index()
     {
-        $growthh = GrowthRecord::all();
+        // Ambil ID pengguna yang sedang login
+        $userId = auth()->id();
+
+        // Dapatkan data GrowthRecord milik pengguna yang sedang login
+        $growthh = GrowthRecord::where('iduser', $userId)->get();
+
+        // Tampilkan data ke view
         return view('user.growthh', compact('growthh'));
     }
+
 
     /**
      * Show the form for creating a new resource.

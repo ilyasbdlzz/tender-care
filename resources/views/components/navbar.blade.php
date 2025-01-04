@@ -3,7 +3,7 @@
     <div class="container mx-auto flex justify-between items-center py-4 px-6">
         <!-- Logo -->
         <div class="flex items-center">
-            <img src="{{('../admin/dist/img/logo2.png')}}" alt="Logo" class="w-16 h-16 mr-2">
+            <img src="{{ asset('admin/dist/img/logo2.png') }}" alt="Logo" class="w-16 h-16 mr-2">
             <span class="text-2xl font-semibold text-[#A375FF]">
                 Tender <span class="text-[#8C52FF]">Care</span>
             </span>
@@ -40,7 +40,7 @@
                             <div id="dropdownMenu" class="absolute right-0 mt-2 w-48 bg-white rounded shadow-lg hidden z-50">
                                 @auth
                                 @if (Auth::user()->role == User::ROLE_MEDIC || Auth::user()->role == User::ROLE_ADMIN)
-                                    <a href="{{ asset('/admin/index1') }}" class="block px-4 py-2 text-gray-700 hover:bg-purple-100">Dashboard</a>
+                                    <a href="{{ asset('index1') }}" class="block px-4 py-2 text-gray-700 hover:bg-purple-100">Dashboard</a>
                                 @endif
                             @endauth
                             
