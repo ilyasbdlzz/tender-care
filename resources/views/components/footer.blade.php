@@ -4,7 +4,7 @@
         <!-- Logo and Description -->
         <div class="col-span-1 mb-6 md:mb-0">
             <div class="flex items-center mb-4">
-                <img src="{{('admin/dist/img/logo2.png')}}" alt="Logo" class="w-16 h-16 mr-2">
+                <img src="{{('admin/dist/img/Logo2.png')}}" alt="Logo" class="w-16 h-16 mr-2">
                 <h2 class="text-2xl font-semibold text-[#A375FF]">Tender <span class="text-[#8C52FF]">Care</span></h2>
             </div>
             <p class="text-gray-300 text-sm text-justify">

@@ -14,7 +14,7 @@
     <div class="flex flex-wrap w-full lg:w-9/12 px-5 lg:px-10">
         <!-- Logo Section -->
         <div class="w-2/5 justify-start  lg:justify-start mb-6 m-auto lg:mb-0">
-            <img src="{{ asset('admin/dist/img/logo2.png') }}" alt="LUMIN Logo" class="w-full shadow-sm">
+            <img src="{{ asset('admin/dist/img/Logo2.png') }}" alt="LUMIN Logo" class="w-full shadow-sm">
         </div>
         <!-- Form Section -->
         <div class="w-full lg:w-3/5 px-5 lg:px-10">
