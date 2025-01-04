@@ -28,25 +28,33 @@
             
             
             <div class="flex flex-wrap justify-between gap-6 p-2">
-                <!-- Article Card Component -->
-                @foreach (range(1, 12) as $index)
-                <div class="flex flex-col bg-white rounded-lg shadow-lg w-full sm:w-64 p-2">
-                    <div class="relative">
-                        <img src="{{('../admin/dist/img/child5.jpeg')}}" alt="Parenting Image" class="rounded-t-lg object-cover w-full h-32">
-                        <span class="absolute bottom-2 left-2 bg-[#8C52FF] text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
-                            Health
-                        </span>
+                <!-- Looping Artikel -->
+                @forelse ($articles as $article)
+                    <div class="flex flex-col bg-white rounded-lg shadow-lg w-full sm:w-64 p-2">
+                        <div class="relative">
+                            <img src="{{ asset($article->image) }}" alt="{{ $article->title }}" class="rounded-t-lg object-cover w-full h-32">
+                            <span class="absolute bottom-2 left-2 bg-[#8C52FF] text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+                                {{ $article->category }}
+                            </span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm mt-2">
+                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 1.75C6.615 1.75 2.25 6.115 2.25 11.5S6.615 21.25 12 21.25 21.75 16.885 21.75 11.5 17.385 1.75 12 1.75zM12 19.25a7.75 7.75 0 1 1 0-15.5 7.75 7.75 0 0 1 0 15.5zm.625-12.25a.75.75 0 1 0-1.5 0v4.375a.75.75 0 0 0 .75.75h3.125a.75.75 0 1 0 0-1.5H12.625V7z"/>
+                            </svg>
+                            <span>{{ $article->created_at->format('d M Y') }}</span>
+                        </div>
+                        <h4 class="font-semibold mt-4 text-lg">{{ $article->title }}</h4>
                     </div>
-                    <div class="flex items-center text-gray-500 text-sm mt-2">
-                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 1.75C6.615 1.75 2.25 6.115 2.25 11.5S6.615 21.25 12 21.25 21.75 16.885 21.75 11.5 17.385 1.75 12 1.75zM12 19.25a7.75 7.75 0 1 1 0-15.5 7.75 7.75 0 0 1 0 15.5zm.625-12.25a.75.75 0 1 0-1.5 0v4.375a.75.75 0 0 0 .75.75h3.125a.75.75 0 1 0 0-1.5H12.625V7z"/>
-                        </svg>
-                        <span>10 Maret 2024</span>
-                    </div>
-                    <h4 class="font-semibold mt-4 text-lg">Bagaimana Cara Mengasuh Bayi dengan Benar</h4>
-                </div>
-                @endforeach
+                @empty
+                    <p class="text-center text-gray-500">Belum ada artikel yang tersedia.</p>
+                @endforelse
             </div>
+            
+            <!-- Pagination Links -->
+            <div class="mt-6">
+                {{ $articles->links() }}
+            </div>
+            
         </section>
     </x-slot>
 </x-layout>

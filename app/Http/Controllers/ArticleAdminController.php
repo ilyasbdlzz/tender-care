@@ -20,7 +20,40 @@ class ArticleAdminController extends Controller
     {
         $articles = \App\Models\Article::latest()->take(5)->get(); // Ambil data artikel
         return view('user.index', compact('articles')); // Kirim data ke view
-    }     
+    }   
+
+    public function showArticles(Request $request)
+    {
+        // Query untuk artikel, termasuk filter atau sort jika ada
+        $articles = Article::query();
+
+        // Sorting berdasarkan request
+        if ($request->has('sort')) {
+            switch ($request->sort) {
+                case 'newest':
+                    $articles->orderBy('created_at', 'desc');
+                    break;
+                case 'oldest':
+                    $articles->orderBy('created_at', 'asc');
+                    break;
+                case 'title_asc':
+                    $articles->orderBy('title', 'asc');
+                    break;
+                case 'title_desc':
+                    $articles->orderBy('title', 'desc');
+                    break;
+            }
+        } else {
+            $articles->orderBy('created_at', 'desc'); // Default sorting
+        }
+
+        // Ambil artikel dengan paginasi (misalnya 10 artikel per halaman)
+        $articles = $articles->paginate(10);
+
+        // Kirim data ke view
+        return view('user.article', compact('articles'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

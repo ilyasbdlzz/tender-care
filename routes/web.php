@@ -149,9 +149,7 @@ Route::get('/detail', function () {
     return view('user/articledetail');
 });
 
-Route::get('/article', function () {
-    return view('user/article');
-});
+Route::get('/article', [ArticleAdminController::class, 'showArticles'])->name('articles');
 
 // End Routes User
 
