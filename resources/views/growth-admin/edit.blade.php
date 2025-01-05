@@ -18,7 +18,7 @@
             </div>
             <div class="card-body">
 
-                <form class="forms-sample" action="{{ route('/growth/update', $growth->id) }}" method="post">
+                <form class="forms-sample" action="{{ url('/growth/update', $growth->id) }}" method="post">
                     @csrf
                     @method('put')
 
