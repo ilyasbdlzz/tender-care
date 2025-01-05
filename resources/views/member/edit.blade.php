@@ -18,7 +18,7 @@
             </div>
             <div class="card-body">
 
-                <form class="forms-sample" action="{{ secure_url('/member/update', $member->id) }}" method="post">
+                <form class="forms-sample" action="{{ route('/member/update', $member->id) }}" method="post">
                     @csrf
                     @method('put')
                                     <input type="hidden" class="form-control" id="idmedis" name="idmedis" placeholder="Masukkan Id" value="{{ $member->id ?? '' }}">

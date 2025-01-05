@@ -16,7 +16,7 @@
                 <h4>Form Tambah Member</h4>
             </div>
             <div class="card-body">
-                <form class="forms-sample" action="{{ secure_url('member.store') }}" method="post">
+                <form class="forms-sample" action="{{ route('member.store') }}" method="post">
                     @csrf
                     <div class="form-group row">
                         <label for="name" class="col-sm-4 col-form-label">Nama Member</label>

@@ -17,7 +17,7 @@
                 <h4>Edit Kelola Pengajuan Konseling Anda</h4>
             </div>
             <div class="card-body">
-                <form class="forms-sample" action="{{ url('/conseling/update', $conseling->id) }}" method="post">
+                <form class="forms-sample" action="{{ route('/conseling/update', $conseling->id) }}" method="post">
                     @csrf
                     @method('put')
 
