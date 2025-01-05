@@ -26,7 +26,8 @@
                         <li><a href="{{ asset('/growthrecord') }}" class="text-gray-800 hover:text-purple-600 font-medium">Growth Record</a></li>
                         <li><a href="{{ asset('/growthhistory') }}" class="text-gray-800 hover:text-purple-600 font-medium">History Record</a></li>
                         <li><a href="{{ asset('/article') }}" class="text-gray-800 hover:text-purple-600 font-medium">Article</a></li>
-                        <li><a href="{{ asset('/appointment') }}" class="text-gray-800 hover:text-purple-600 font-medium mr-20">Counseling</a></li>
+                        <li><a href="{{ asset('/appointment') }}" class="text-gray-800 hover:text-purple-600 font-medium">Counseling</a></li>
+                        <li><a href="{{ asset('/appointmentstatus') }}" class="text-gray-800 hover:text-purple-600 font-medium mr-20">Status</a></li>
 
                         <!-- Dropdown -->
                         <li class="relative">
@@ -77,6 +78,7 @@
                     <li><a href="{{ asset('/growthhistory') }}" class="text-gray-800 hover:text-purple-600 font-medium">History Record</a></li>
                     <li><a href="{{ asset('/article') }}" class="text-gray-800 hover:text-purple-600 font-medium">Article</a></li>
                     <li><a href="{{ asset('/appointment') }}" class="text-gray-800 hover:text-purple-600 font-medium">Counseling</a></li>
+                    <li><a href="{{ asset('/appointmentstatus') }}" class="text-gray-800 hover:text-purple-600 font-medium">Status</a></li>
                     @if(Auth::user()->role == 'Admin' || Auth::user()->role == 'TenagaMedis')
                         <li>
                             <a href="{{ asset('/index1') }}" class="text-gray-800 hover:text-purple-600 font-medium">Dashboard</a>

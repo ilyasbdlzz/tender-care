@@ -69,50 +69,60 @@
         <!-- Consuling -->
 
         <section class="my-20 mx-6 lg:mx-12">
-            <div class="bg-white w-full shadow-lg px-5 py-3 flex relative rounded-md">
-                <img src="{{('../admin/dist/img/psicholog.png')}}" class="bg-gray-50 rounded-full w-20 h-20 border-black border-b-1 shadow-lg" alt="">
-                <h3 class="align-bottom pt-8 ps-3 font-nunito font-bold">Counseling Registration</h3>
-                <!-- Icon -->
-                <div class="icon rounded-full border-2 border-[#471637] w-10 h-10 absolute top-3 right-3 flex items-center justify-center my-5">
-                    <i class="fas fa-message text-[#471637]"></i>
+            <a href="/appointment" class="block group"> <!-- Tambahkan class 'group' untuk mengontrol animasi hover -->
+                <div class="bg-white w-full shadow-lg px-5 py-3 flex relative rounded-md transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl">
+                    <img src="{{('../admin/dist/img/psicholog.png')}}" class="bg-gray-50 rounded-full w-20 h-20 border-black border-b-1 shadow-lg transition-transform duration-300 group-hover:rotate-12" alt="">
+                    <h3 class="align-bottom pt-8 ps-3 font-nunito font-bold transition-colors duration-300 group-hover:text-[#471637]">
+                        Counseling Registration
+                    </h3>
+                    <!-- Icon -->
+                    <div class="icon rounded-full border-2 border-[#471637] w-10 h-10 absolute top-3 right-3 flex items-center justify-center my-5 transition-transform duration-300 group-hover:rotate-45">
+                        <i class="fas fa-message text-[#471637]"></i>
+                    </div>
                 </div>
-            </div>
+            </a>
         </section>
+        
         
 
         <!-- Health Record -->
-        <section class="container mx-auto px-6 lg:px-12 my-16">
-            <h3 class="text-2xl font-semibold my-2">Health Record</h3>
-            <h3 class="text-sm my-2">Catat Perkembangan Bayi Anda</h3>
-            
-                <div class="flex flex-wrap justify-center space-x-5">
-                    <!-- Card 1 -->
-                    <div class="flex-none bg-white rounded-lg shadow-lg w-full sm:w-2/6 p-5 group relative overflow-hidden flex mb-5 sm:mb-0">
-                        <!-- Icon Section -->
-                        <div class="w-2/5 flex items-center justify-center">
-                            <i class="fa-solid fa-baby text-[5rem] text-[#7342D4]"></i>
-                        </div>
-                        <!-- Content Section -->
-                        <div class="w-3/5 flex flex-col justify-center pl-4">
-                            <h3 class="text-xl font-semibold text-[#8C52FF] mb-3">Growth Record</h3>
-                            <button class="bg-[#E8DCFF] rounded-lg p-2 text-sm font-bold text-gray-800 w-1/2 self-center">Start</button>
-                        </div>
-                    </div>
-                    
-                    <!-- Card 2 -->
-                    <div class="flex-none bg-white rounded-lg shadow-lg w-full sm:w-2/6 p-5 group relative overflow-hidden flex mb-5 sm:mb-0">
-                        <!-- Icon Section -->
-                        <div class="w-2/5 flex items-center justify-center">
-                            <i class="fa-solid fa-heart-pulse text-[5rem] text-[#7342D4]"></i>
-                        </div>
-                        <!-- Content Section -->
-                        <div class="w-3/5 flex flex-col justify-center pl-4">
-                            <h3 class="text-xl font-semibold text-[#8C52FF] mb-3">Health Record</h3>
-                            <button class="bg-[#E8DCFF] rounded-lg p-2 text-sm font-bold text-gray-800 w-1/2 self-center">Start</button>
-                        </div>
-                    </div>
-                </div>
-        </section>
+<section class="container mx-auto px-6 lg:px-12 my-16">
+    <h3 class="text-2xl font-semibold my-2">Health Record</h3>
+    <h3 class="text-sm my-2">Catat Perkembangan Bayi Anda</h3>
+    
+    <div class="flex flex-wrap justify-center space-x-5">
+        <!-- Card 1: Growth Record -->
+        <a href="/growthrecord" class="flex-none bg-white rounded-lg shadow-lg w-full sm:w-2/6 p-5 group relative overflow-hidden flex mb-5 sm:mb-0 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+            <!-- Icon Section -->
+            <div class="w-2/5 flex items-center justify-center transform transition-transform duration-300 group-hover:rotate-6">
+                <i class="fa-solid fa-baby text-[5rem] text-[#7342D4]"></i>
+            </div>
+            <!-- Content Section -->
+            <div class="w-3/5 flex flex-col justify-center pl-4">
+                <h3 class="text-xl font-semibold text-[#8C52FF] mb-3 group-hover:text-[#7342D4]">Growth Record</h3>
+                <button class="bg-[#E8DCFF] rounded-lg p-2 text-sm font-bold text-gray-800 w-1/2 self-center transform transition-transform duration-300 group-hover:scale-110">
+                    Start
+                </button>
+            </div>
+        </a>
+        
+        <!-- Card 2: Health Record -->
+        <a href="/healthrecord" class="flex-none bg-white rounded-lg shadow-lg w-full sm:w-2/6 p-5 group relative overflow-hidden flex mb-5 sm:mb-0 transform transition-all duration-500 hover:scale-100 hover:shadow-lg hover:bg-[#F4EBFF]">
+            <!-- Icon Section -->
+            <div class="w-2/5 flex items-center justify-center transform transition-transform duration-500 group-hover:-rotate-12">
+                <i class="fa-solid fa-heart-pulse text-[5rem] text-[#7342D4]"></i>
+            </div>
+            <!-- Content Section -->
+            <div class="w-3/5 flex flex-col justify-center pl-4">
+                <h3 class="text-xl font-semibold text-[#8C52FF] mb-3 group-hover:text-[#471637]">Health Record</h3>
+                <button class="bg-[#E8DCFF] rounded-lg p-2 text-sm font-bold text-gray-800 w-1/2 self-center transform transition-transform duration-500 group-hover:scale-125">
+                    Start
+                </button>
+            </div>
+        </a>
+    </div>
+</section>
+
 
 
         <!-- Article Section -->
