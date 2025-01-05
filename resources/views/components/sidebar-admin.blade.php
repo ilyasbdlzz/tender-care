@@ -3,7 +3,7 @@
 <aside class="main-sidebar elevation-4" style="background: linear-gradient(to right, #40217F, #8C52FF); color: white;">
     <!-- Brand Logo -->
     <a href="{{url ('/')}}" class="brand-link" style="color: white;">
-        <img src="{{ asset('admin/dist/img/logo2.png') }}" alt="Forbit Logo" class="brand-image img-circle">
+        <img src="{{ asset('admin/dist/img/Logo2.png') }}" alt="Tender Care Logo" class="brand-image img-circle">
         <span class="brand-text font-weight-light">Tender Care</span>
     </a>
   
@@ -12,7 +12,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('admin/dist/img/logo2.png') }}" class="img-circle elevation-2" alt="User Image">
+                <img src="{{ asset('admin/dist/img/Logo2.png') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a href="#" class="d-block" style="color: white;">{{ Auth::user()->name }}</a>
