@@ -54,7 +54,7 @@
                   <a href="{{ url('member/edit', $member->id) }}" class="btn btn-warning text-dark">
                       <i class="far fa-edit"></i> Edit
                   </a>
-                  <form action="{{ route('member/destroy', $member->id) }}" method="post" class="d-inline">
+                  <form action="{{ url('member/destroy', $member->id) }}" method="post" class="d-inline">
                       @csrf
                       @method('delete')
                       <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data?')">
