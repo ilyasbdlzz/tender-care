@@ -1,6 +1,6 @@
 <x-guest-layout>
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="https://tender-care-beta1-production.up.railway.app/">
         @csrf
                 <!-- Header -->
                 <p class="text-4xl font-bold text-center text-[#311F3B] font-dancing">Login</p>
