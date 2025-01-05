@@ -22,7 +22,7 @@
             <div class="mt-4">
                 <ul class="flex justify-between border-b-2 border-[#F0D7E7]">
                     <li class="px-10 lg:px-20 text-lg lg:text-2xl font-semibold font-nunito border-b-2 border-transparent hover:border-[#492F59] transition-colors duration-300 text-[#492F59] cursor-pointer">
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ secure_url ('login') }}">Login</a>
                     </li>
                     <li class="px-10 lg:px-20 text-lg lg:text-2xl font-semibold font-nunito border-b-2 border-[#492F59] text-[#492F59] cursor-pointer">
                         Register
@@ -30,7 +30,7 @@
                 </ul>
             </div>
 
-            <form method="POST" action="{{ route('register') }}" class="mt-6 space-y-5">
+            <form method="POST" action="{{ secure_url('register') }}" class="mt-6 space-y-5">
                 @csrf
 
                 <!-- Username Input -->

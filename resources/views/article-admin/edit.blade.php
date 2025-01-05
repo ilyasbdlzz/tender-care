@@ -19,7 +19,7 @@
             </div>
             <div class="card-body">
 
-                <form class="forms-sample" action="{{ url('/articleadmin/update', $article->id) }}" method="post">
+                <form class="forms-sample" action="{{ secure_url('/articleadmin/update', $article->id) }}" method="post">
                     @csrf
                     @method('put')
 

@@ -17,7 +17,7 @@
                 <h4>Edit Kelola Pengajuan Konseling (Tenaga Medis) Anda</h4>
             </div> 
             <div class="card-body">
-                <form class="forms-sample" action="{{ url('/medis/konseling/update', $conseling->id) }}" method="post">
+                <form class="forms-sample" action="{{ secure_url('/medis/konseling/update', $conseling->id) }}" method="post">
                     @csrf
                     @method('put')
 

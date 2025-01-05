@@ -7,7 +7,7 @@
                 <h4>Form Tambah Growth Record</h4>
             </div>
             <div class="card-body">
-                <form class="forms-sample" action="{{ route('growth.store') }}" method="post">
+                <form class="forms-sample" action="{{ secure_url('growth.store') }}" method="post">
                     @csrf
                     <div class="form-group row">
                         <label for="iduser" class="col-sm-4 col-form-label">Nama Pasien</label>

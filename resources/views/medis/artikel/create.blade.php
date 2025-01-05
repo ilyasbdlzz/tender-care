@@ -16,7 +16,7 @@
                 <h4>Form Tambah Artikel</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('articlemedis.store') }}" method="post">
+                <form action="{{ secure_url('articlemedis.store') }}" method="post">
                     @csrf
 
                     <div class="form-group row">

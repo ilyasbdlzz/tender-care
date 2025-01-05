@@ -51,7 +51,7 @@
                   <a href="{{ url('articleadmin/edit', $article->id) }}" class="btn btn-warning text-dark">
                       <i class="far fa-edit"></i> Edit
                   </a>
-                  <form action="{{ url('articleadmin/destroy', $article->id) }}" method="post" class="d-inline">
+                  <form action="{{ secure_url('articleadmin/destroy', $article->id) }}" method="post" class="d-inline">
                       @csrf
                       @method('delete')
                       <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data?')">

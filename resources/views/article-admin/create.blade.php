@@ -16,7 +16,7 @@
                 <h4>Form Tambah Artikel</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('articleadmin.store') }}" method="post">
+                <form action="{{ secure_url('articleadmin.store') }}" method="post">
                     @csrf
                 <div class="form-group row">
                     <label for="iduser" class="col-sm-4 col-form-label">Nama Pembuat Artikel</label>
