@@ -7,7 +7,7 @@
                 <h4>Form Tambah Tenaga Medis</h4>
             </div>
             <div class="card-body">
-                <form class="forms-sample" action="{{ secure_url('medic.store') }}" method="post">
+                <form class="forms-sample" action="{{ route('medic.store') }}" method="post">
                     @csrf
                     <div class="form-group row">
                         <label for="idmedis" class="col-sm-4 col-form-label">NIP</label>
