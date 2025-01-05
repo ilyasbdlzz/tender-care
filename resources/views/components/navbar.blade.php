@@ -68,6 +68,7 @@
     </div>
 
     <!-- Mobile Dropdown Menu -->
+    <!-- Mobile Dropdown Menu -->
     <div id="mobileMenu" class="lg:hidden hidden flex-col mt-4 px-6 space-y-4">
         @if (Route::has('login'))
             @auth
@@ -94,9 +95,17 @@
                         </form>
                     </li>
                 </ul>
+            @else
+                <ul class="space-y-4">
+                    <li><a href="{{ route('login') }}" class="text-gray-800 hover:text-purple-600 font-medium">Log In</a></li>
+                    @if (Route::has('register'))
+                        <li><a href="{{ route('register') }}" class="text-gray-800 hover:text-purple-600 font-medium">Register</a></li>
+                    @endif
+                </ul>
             @endauth
         @endif
     </div>
+
 </header>
 
 <!-- JavaScript -->
