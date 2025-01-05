@@ -10,7 +10,7 @@
                             Login
                         </li>
                         <li class="px-10 text-lg w-1/2 font-semibold font-nunito border-b-2 border-transparent hover:border-[#492F59] transition-colors duration-300 text-[#492F59] cursor-pointer">
-                            <a href="{{ asset('register') }}">Register</a>
+                            <a href="{{ route('register') }}">Register</a>
                         </li>
                     </ul>
                 </div>
