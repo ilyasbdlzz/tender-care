@@ -1,6 +1,6 @@
 <x-guest-layout>
 
-    <form method="POST" action="{{ secure_url ('login') }}">
+    <form method="POST" action="{{ route ('login') }}">
         @csrf
                 <!-- Header -->
                 <p class="text-4xl font-bold text-center text-[#311F3B] font-dancing">Login</p>

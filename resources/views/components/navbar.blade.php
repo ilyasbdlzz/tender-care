@@ -67,6 +67,7 @@
     </div>
 
     <!-- Mobile Dropdown Menu -->
+    <!-- Mobile Dropdown Menu -->
     <div id="mobileMenu" class="lg:hidden hidden flex-col mt-4 px-6 space-y-4">
         @if (Route::has('login'))
             @auth
@@ -77,12 +78,24 @@
                     <li><a href="{{ asset('/growthhistory') }}" class="text-gray-800 hover:text-purple-600 font-medium">History Record</a></li>
                     <li><a href="{{ asset('/article') }}" class="text-gray-800 hover:text-purple-600 font-medium">Article</a></li>
                     <li><a href="{{ asset('/appointment') }}" class="text-gray-800 hover:text-purple-600 font-medium">Counseling</a></li>
+                    <li class="flex items-center">
+                        <img src="{{('../admin/dist/img/user(1).png')}}" alt="User" class="w-4 h-4 mr-1">
+                        <a id="navbarDropdown" class="text-purple-800 font-medium" href="#">{{ Auth::user()->name }}</a>
+                    </li>
+                    <li>
+                        <a class="text-purple-600 flex items-center" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <img src="{{('../admin/dist/img/logout.png')}}" alt="Logout" class="w-4 h-4 mr-1">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                            @csrf
+                        </form>
+                    </li>
                 </ul>
             @else
                 <a href="{{ route('login') }}" class="text-gray-800 hover:text-purple-600 font-medium block">Log In</a>
                 @if (Route::has('register'))
                     <a href="{{ route('register') }}" class="text-gray-800 hover:text-purple-600 font-medium block">Register</a>
-                    
                 @endif
             @endauth
         @endif

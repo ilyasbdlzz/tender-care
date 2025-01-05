@@ -39,7 +39,7 @@
                         </x-dropdown-link>
 
                         <!-- Authentication -->
-                        <form method="POST" action="{{ secure_url('logout') }}">
+                        <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
                             <x-dropdown-link :href="secure_url('logout')"
@@ -85,7 +85,7 @@
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
-                <form method="POST" action="{{ secure_url('logout') }}">
+                <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
                     <x-responsive-nav-link :href="secure_url('logout')"
