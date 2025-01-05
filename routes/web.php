@@ -133,17 +133,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/appointmentstatus', [CounselingController::class, 'index'])->name('appointmentstatus');
     Route::get('appointment', [CounselingController::class, 'create'])->name('appointment.create');
     Route::post('appointment', [CounselingController::class, 'store'])->name('appointmentstatus.store');
+    Route::get('/healthrecord', function () {
+        return view('user/healthrecord');
+    });
+    
+    Route::get('/growthrecord', function () {
+        return view('user/growthrecord');
+    });
 });
 
 
 
-Route::get('/healthrecord', function () {
-    return view('user/healthrecord');
-});
-
-Route::get('/growthrecord', function () {
-    return view('user/growthrecord');
-});
 
 Route::get('/detail', function () {
     return view('user/articledetail');
