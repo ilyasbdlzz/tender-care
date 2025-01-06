@@ -72,7 +72,7 @@ class MemberController extends Controller
         ]);
 
         $member->update($data);
-        return redirect('/member')->with('update', 'Tugas Berhasil di Perbarui');
+        return redirect('/member')->with('update', 'Data Berhasil di Perbarui');
     }
 
 
@@ -87,6 +87,6 @@ class MemberController extends Controller
         // Hapus data
         $id->delete();
         // Redirect ke halaman index dengan pesan sukses
-        return redirect('member')->with('delete', 'Tugas Berhasil di Hapus!');
+        return redirect('member')->with('delete', 'Data Berhasil di Hapus!');
     }
 }

@@ -112,6 +112,6 @@ class CounselingMedisController extends Controller
         // Hapus data
         $id->delete();
         // Redirect ke halaman index dengan pesan sukses
-        return redirect('medis/konseling')->with('delete', 'Tugas Berhasil Dihapus!');
+        return redirect('medis/konseling')->with('delete', 'Data Berhasil Dihapus!');
     }
 }

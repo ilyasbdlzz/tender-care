@@ -94,6 +94,6 @@ class MedicController extends Controller
         // Hapus data
         $idmedis->delete();
         // Redirect ke halaman index dengan pesan sukses
-        return redirect('medic')->with('delete', 'Tugas Berhasil di Hapus!');
+        return redirect('medic')->with('delete', 'Data Berhasil di Hapus!');
     }
 }
