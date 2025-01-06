@@ -43,6 +43,7 @@
                 <th>Id</th>
                 <th>Nama Pasien</th>
                 <th>Nama Psikolog</th>
+                <th>Nomor Handphone</th>
                 <th>Tanggal Konseling</th>
                 <th>Jam Konseling</th>
                 <th>Status</th>
@@ -53,6 +54,7 @@
               <td>{{ $conseling->id }}</td>
               <td>{{ $conseling->users->name ?? 'Pasien tidak ditemukan' }}</td>
               <td>{{ $conseling->medic->users->name ?? 'Psikolog tidak ditemukan' }}</td>
+              <td>{{ $conseling->medic->users->contact }}</td>
               <td>{{ $conseling->date }}</td>
               <td>{{ $conseling->clock }}</td>
               <td>{{ $conseling->status }}</td>

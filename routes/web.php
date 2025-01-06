@@ -13,15 +13,14 @@ use App\Http\Controllers\ArticleAdminController;
 use App\Http\Controllers\HealthAdminController;
 use App\Http\Controllers\MedicController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', [ArticleAdminController::class, 'showHomepage'])->name('user');
 
 
 // Routes Admin/Tenage Medis
 
-Route::get('/index1', function () {
-    return view('admin/index');
-})->name('admin');
+Route::get('/index1', [AdminController::class, 'index'])->name('admin.index');
 
 // Medic Routes with Prefix
 Route::prefix('medic')->group(function () {

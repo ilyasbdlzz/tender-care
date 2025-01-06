@@ -18,6 +18,10 @@
                     <div class="col-sm-8">: {{ $conseling->medic->users->name ?? 'Psikolog tidak ditemukan' }}</div>
                 </div>
                 <div class="row mb-2">
+                    <div class="col-sm-4 fw-bold">Nomor Handphone</div>
+                    <div class="col-sm-8">: {{ $conseling->medic->users->contact }}</div>
+                </div>
+                <div class="row mb-2">
                     <div class="col-sm-4 fw-bold">Tanggal Konseling</div>
                     <div class="col-sm-8">: {{ $conseling->date }}</div>
                 </div>
