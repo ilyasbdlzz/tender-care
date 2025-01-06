@@ -95,6 +95,6 @@ class ConselingAdminController extends Controller
         // Hapus data
         $id->delete();
         // Redirect ke halaman index dengan pesan sukses
-        return redirect('conseling')->with('delete', 'Tugas Berhasil di Hapus!');
+        return redirect('conseling')->with('delete', 'Data Berhasil di Hapus!');
     }
 }
