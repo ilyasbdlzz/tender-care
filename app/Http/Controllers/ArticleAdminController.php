@@ -83,7 +83,12 @@ class ArticleAdminController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id) {}
+    public function detail($id)
+{
+    $article = Article::findOrFail($id); // Ambil artikel berdasarkan ID
+    return view('user.articledetail', compact('article')); // Tampilkan halaman detail
+}
+
 
     /**
      * Show the form for editing the specified resource.

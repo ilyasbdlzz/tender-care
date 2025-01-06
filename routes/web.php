@@ -149,6 +149,8 @@ Route::get('/detail', function () {
 });
 
 Route::get('/article', [ArticleAdminController::class, 'showArticles'])->name('articles');
+Route::get('/articles', [ArticleAdminController::class, 'index'])->name('articles.index');
+Route::get('/detail/{id}', [ArticleAdminController::class, 'detail'])->name('user.articledetail');
 
 // End Routes User
 
