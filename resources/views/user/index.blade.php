@@ -126,46 +126,63 @@
 
 
         <!-- Article Section -->
-<section class="bg-[#DDCBFF] py-8">
-    <div class="container mx-auto px-6 lg:px-12">
-        <div class="border-l-4 border-[#623E76] pl-4 mb-6">
-            <h1 class="font-nunito font-bold text-3xl">What New Today</h1>
-        </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <!-- Large Article Section -->
-            <div class="col-span-1 lg:col-span-1 bg-white p-6 rounded-lg shadow-md">
-                <div class="h-48 bg-gray-100 flex items-center justify-center rounded-lg">
-                    <p class="text-gray-500">Large article section (add content here).</p>
+        <section class="bg-[#DDCBFF] py-8">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="border-l-4 border-[#623E76] pl-4 mb-6">
+                    <h1 class="font-nunito font-bold text-3xl">What New Today</h1>
                 </div>
-            </div>
-
-            <!-- Smaller Articles Section -->
-            <div class="flex flex-col gap-4">
-                @forelse ($articles as $article)
-                    <div class="flex bg-white p-4 rounded-lg shadow-md">
-                        <div class="w-24 h-24 bg-gray-200 flex-shrink-0">
-                            <img src="{{ asset($article->image) }}" class="w-full h-full object-cover rounded-lg" alt="{{ $article->title }}">
-                        </div>
-                        <div class="ml-4">
-                            <span class="bg-[#88A8CD] text-white font-nunito text-center font-semibold rounded-full px-3 py-1 text-xs">
-                                {{ $article->category }}
-                            </span>
-                            <h2 class="mt-2 text-sm font-semibold text-gray-800">
-                                {{ $article->title }}
-                            </h2>
-                            <div class="flex items-center text-xs text-gray-500 mt-1">
-                                <i class="fas fa-calendar"></i>
-                                <p class="ml-1">{{ $article->created_at->format('F d, Y') }}</p>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Article Pertama sebagai Artikel Besar -->
+                    @if ($articles->first())
+                        <div class="col-span-1 lg:col-span-1 bg-white p-6 rounded-lg shadow-md">
+                            <div class="h-48 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-center text-gray-500 text-sm mb-2">
+                                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 1.75C6.615 1.75 2.25 6.115 2.25 11.5S6.615 21.25 12 21.25 21.75 16.885 21.75 11.5 17.385 1.75 12 1.75zM12 19.25a7.75 7.75 0 1 1 0-15.5 7.75 7.75 0 0 1 0 15.5zm.625-12.25a.75.75 0 1 0-1.5 0v4.375a.75.75 0 0 0 .75.75h3.125a.75.75 0 1 0 0-1.5H12.625V7z"/>
+                                        </svg>
+                                        <span>{{ $articles->first()->created_at->format('d M Y') }}</span>
+                                    </div>
+                                    <h2 class="font-semibold text-lg text-gray-800">
+                                        {{ $articles->first()->title }}
+                                    </h2>
+                                    <p class="text-gray-600 mt-2 text-sm">
+                                        {{ Str::limit($articles->first()->content, 150, '...') }}
+                                    </p>
+                                </div>
+                                <a href="{{ url('detail', $articles->first()->id) }}" class="mt-4 px-4 py-2 bg-[#7342D4] text-white text-sm rounded shadow hover:bg-[#8C52FF] text-center self-start">Baca Selengkapnya</a>
                             </div>
                         </div>
+                    @endif
+        
+                    <!-- Artikel-artikel Lainnya -->
+                    <div class="flex flex-col gap-4">
+                        @foreach ($articles->skip(1) as $article)
+                            <div class="flex flex-col bg-white p-4 rounded-lg shadow-md">
+                                <div class="flex items-center text-gray-500 text-sm mb-2">
+                                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 1.75C6.615 1.75 2.25 6.115 2.25 11.5S6.615 21.25 12 21.25 21.75 16.885 21.75 11.5 17.385 1.75 12 1.75zM12 19.25a7.75 7.75 0 1 1 0-15.5 7.75 7.75 0 0 1 0 15.5zm.625-12.25a.75.75 0 1 0-1.5 0v4.375a.75.75 0 0 0 .75.75h3.125a.75.75 0 1 0 0-1.5H12.625V7z"/>
+                                    </svg>
+                                    <span>{{ $article->created_at->format('d M Y') }}</span>
+                                </div>
+                                <h2 class="font-semibold text-sm text-gray-800">
+                                    {{ $article->title }}
+                                </h2>
+                                <p class="text-gray-600 mt-2 text-sm">
+                                    {{ Str::limit($article->content, 100, '...') }}
+                                </p>
+                                <a href="{{ url('detail', $article->id) }}" class="mt-4 px-4 py-2 bg-[#7342D4] text-white text-sm rounded shadow hover:bg-[#8C52FF] text-center self-start">Baca Selengkapnya</a>
+                            </div>
+                        @endforeach
+        
+                        @if ($articles->skip(1)->isEmpty())
+                            <p class="text-center text-gray-500">Belum ada artikel tambahan yang tersedia.</p>
+                        @endif
                     </div>
-                @empty
-                    <p class="text-center text-gray-500">Belum ada artikel yang tersedia.</p>
-                @endforelse
+                </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
+        
 
     </x-slot>
     
